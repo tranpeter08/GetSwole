@@ -1,0 +1,79 @@
+/* recipeResults.css */
+
+.recipe-results li{
+  margin-top: 2rem;
+}
+
+.recipeResult-container{
+  background: white;
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 80rem;
+  margin: auto;
+}
+
+.recipeResult-container,
+.recipeResult-detail-container,
+.recipeResult-img-container{
+  padding: 1rem;
+}
+
+
+.recipeResult-detail-container{
+  display: flex;
+  flex-flow: column;
+}
+
+.recipeResult-img-container,
+.recipeResult-detail-container{
+  font-size: 1.8rem;
+}
+
+.recipeResult-img-container{
+  flex: 1 1 24rem;
+}
+
+.recipeResult-img-container img{
+  width: 100%;
+}
+
+.recipeResult-detail-container{
+  flex: 2 1 24rem;
+}
+
+.recipeResult-detail-container h3{
+  padding-bottom: 1rem;
+}
+
+.recipeResult-detail-container a{
+  font: inherit;
+}
+
+.recipeResult-detail-container a:hover{
+  text-decoration: underline;
+}
+
+.recipeResult-detail-container span{
+  display: block;
+}
+
+.recipeDetail-container2 span,
+.recipeResult-container .recipeResult-label{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  display: inline;
+}
+
+.remove-button-container{
+  margin-top: auto;
+  text-align: center;
+}
+
+.recipeResult-container button{
+  font-size: 1.6rem;
+}
+
+.recipeResult-container button:hover{
+  background-color: red;
+  color: black;
+}

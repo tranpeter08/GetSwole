@@ -1,0 +1,131 @@
+/* nutrition.css */
+
+.nutrition-section{
+  text-align: center;
+}
+
+.nutri-h2{
+  font-size: 3.2rem;
+  background: 
+    linear-gradient(
+      rgba(0, 0,0 ,.8),
+      rgba(0,0,0,.2), 
+      rgba(0, 0, 0, .8)
+    ),
+    url('./supermarket.jpg')
+    center / cover
+    no-repeat
+    ;
+  color: white;
+  display: inline-block;
+  width: 100%;
+  padding: 2rem 0;
+  text-shadow: 0 0 .4rem black;
+}
+
+#recipe-search-form,
+#nutri-search-form{
+  margin: 2rem 2rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+
+#nutri-search-form input{
+  flex: 1 1 20rem;
+  max-width: 40rem;
+}
+
+#recipe-search-filters-button,
+#recipe-search-button,
+#recipe-search-form input[type=text],
+#nutri-searchMore-button,
+#nutri-search-form button,
+#nutri-search-form input{
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(182, 181, 181);
+  font-size: 2rem;
+  background-color: white;
+}
+
+#recipe-search-filters-button,
+#recipe-search-button,
+#nutri-searchMore-button,
+#nutri-search-form button,
+#nutri-search-form input{
+  padding: .4rem 1.3rem;
+}
+
+#recipe-search-filters-button,
+#nutri-search-form input{
+  border-top-left-radius: 1.9rem;
+  border-bottom-left-radius: 1.9rem;
+  border-right: none;
+}
+
+#recipe-search-button,
+#nutri-search-form button{
+  border-top-right-radius: 1.9rem;
+  border-bottom-right-radius: 1.9rem;
+  border-left: none;
+}
+
+.recipeResult-detail-container a,
+.to-top-anchor,
+.recipeResult-detail-container a:visited,
+.to-top-anchor:visited
+.recipeResult-detail-container h3,
+.showFilters-false,
+#recipe-search-button,
+#nutri-search-form button{
+  color: rgb(25, 80, 120);
+}
+
+.pagination button:hover,
+.showFilters-false:hover,
+#recipe-search-button:hover,
+#nutri-search-form button:hover,
+.to-top-anchor:hover{
+  color: rgb(0, 175, 255);
+}
+
+.nutrition-section ul{
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.nutri-search-results{
+  margin: 2rem 0;
+  padding: 0 1rem;
+}
+
+.recipe-results h3,
+.nutri-search-results h3{
+  font-size: 2.4rem;
+  padding: 0 1rem;
+}
+
+.nutri-search-message{
+  font-size: 1.8rem;
+  margin: 2rem;
+}
+
+#nutri-searchMore-button{
+  font-size: 1.8rem;
+  background-color: rgb(0, 175, 75);
+  border-radius: 1.9rem;
+  flex: 1 0 auto;
+  margin: 2rem;
+  border: none;
+  transition: .3s;
+}
+
+#nutri-searchMore-button:hover{
+  background-color: rgb(0, 120, 40);
+}
+
+.to-top-anchor{
+  font-size: 1.6rem;
+  display: inline-block;
+}

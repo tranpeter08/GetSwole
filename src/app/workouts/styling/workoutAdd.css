@@ -1,0 +1,20 @@
+.workouts-section .workoutAdd-li {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(100, 185, 225, .6);
+}
+
+.workoutAdd-li button{
+  flex: 1 0 140px;
+  height: auto;
+  align-self: center;
+  border: none;
+  background: none;
+  color: black;
+  font-size: 2rem;
+}
+
+.workoutAdd-li button:hover,
+.exerciseAdd-button:hover{
+  color: rgb(145, 145, 145);
+}

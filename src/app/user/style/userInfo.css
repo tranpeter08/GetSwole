@@ -1,0 +1,51 @@
+/* userInfo.css */
+
+.userInfo-section{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.userInfo-img{
+  width: 150px;
+  height:150px;
+  border-radius: 50%;
+
+}
+
+.userInfo-detail-container{
+  background: white;
+  border-radius: 0.8rem;
+  padding: 1rem 2rem;
+  margin-top: 2rem;
+}
+
+.userInfo-detail-container, .userInfo-img{
+  /* margin: 2rem; */
+}
+
+.userInfo-section h2{
+  font-size: 2rem;
+}
+
+.userInfo-detail-container p {
+  font-size: 1.6rem;
+}
+
+.userInfo-section button{
+  background: none;
+  border: none;
+  padding: 1rem;
+}
+
+.userInfo-section button:hover{
+  color: grey;
+}
+
+.edit-profile-icon{
+  font-size: 2rem;
+}
+
+.profile-button-container{
+  text-align: center;
+}

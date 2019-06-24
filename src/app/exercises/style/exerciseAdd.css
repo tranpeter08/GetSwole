@@ -1,0 +1,20 @@
+/* exerciseAdd.css */
+
+.add-icon{
+  font-size: 4rem;
+  transition: .3s;
+}
+
+.exerciseAdd-button{
+  background: none;
+  border: none;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+}
+
+
+
+.exercises-section .exerciseAdd-li {
+  background-color: rgba(93, 214, 208, 0.6)
+}

@@ -1,0 +1,68 @@
+/* exerciseList.css */
+
+.exercises-section-h2{
+  background:
+  linear-gradient(
+    rgba(0, 0,0 ,.8),rgba(0,0,0,.2), 
+    rgba(0, 0, 0, .8)
+  ),
+  url('./bridge-running.jpg')
+  top 52% center / cover
+  no-repeat;
+}
+
+.exercises-back-button {
+  margin-top: 2rem;
+  margin-left:2rem;
+  font-size: 1.6rem;
+  border-radius: 1.6rem;
+  padding: .4rem 1rem;
+  color: white;
+  background-color: black;
+  border: none;
+  transition: .3s;
+}
+
+.exercises-back-button:hover{
+  background-color: rgb(80, 80, 80)
+}
+
+.exercises-section p {
+  font-size: 1.6rem;
+}
+
+.exercises-section li{
+  background-color: rgb(90, 205, 200);
+  flex: 1 0 240px;
+}
+
+
+@media screen and (min-width: 480px) {
+  .exercises-section li {
+    flex: 1 0 260px;
+  }
+}
+
+@media screen and (min-width: 580px) {
+  .exercises-section li {
+    max-width: calc(50% - 20px);
+  }
+}
+
+@media screen and (min-width: 880px) {
+  .exercises-section li{
+    max-width: calc(33.333% - 20px);
+  }
+}
+
+@media screen and (min-width: 1180px) {
+  .exercises-section li {
+    max-width: calc(25% - 20px);
+  }
+}
+
+@media (min-width: 1400px) {
+  .exercises-section li{
+    max-width: calc(20% - 20px);
+  }
+}

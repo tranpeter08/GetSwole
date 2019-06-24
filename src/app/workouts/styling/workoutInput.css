@@ -1,0 +1,14 @@
+.workout-formGroup{
+  padding: 1rem;
+}
+
+.workout-formGroup label, .workout-formGroup input{
+  font-size: 1.8rem;
+  margin-top: .4rem;
+}
+
+.workout-formGroup input{
+  width: 100%;
+  border: none;
+  padding: .4rem;
+}
