@@ -47,7 +47,8 @@ export const updateProfile = data => (dispatch, getState) => {
   .then(normalizeRes)
   .then(() => {
     dispatch(updateProfileSuccess());
-    dispatch(updateProfile());
+    dispatch(getProfile());
+    return true;
   })
   .catch(err => {
     dispatch(userError(err));
