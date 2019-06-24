@@ -5,6 +5,8 @@ import authReducer from './auth/auth-reducer';
 import userReducer from './user/user-reducer';
 import workoutReducer from './workouts/workout-reducer';
 import exerciseReducer from './exercises/exercise-reducer';
+import nutriReducer from './nutrition/reducers/nutrition-search-reducer';
+import nutriDetailReducer from './nutrition/reducers/nutrition-details-reducer';
 import recipesReducer from './recipes/recipes-reducer';
 import myRecipesReducer from './myRecipes/myRecipes-reducer';
 import { loadToken } from './misc/local-storage';
@@ -14,10 +16,12 @@ import {RESET_APP} from './root-actions';
 const appReducer =
   combineReducers({
     form: formReducer,
-    workout: workoutReducer,
-    exercise: exerciseReducer,
     auth: authReducer,
     user: userReducer,
+    workout: workoutReducer,
+    exercise: exerciseReducer,
+    nutrition: nutriReducer,
+    nutriDetail: nutriDetailReducer,
     recipes: recipesReducer,
     myRecipes: myRecipesReducer
   });

@@ -1,90 +1,77 @@
 import React from 'react';
-import food from '../food.jpg';
-import {normalizeRes} from '../../misc/utils';
+import {connect} from 'react-redux';
 import NutriDetailLi from './NutriDetailLi'
+import {getNutriData} from '../actions/nutrition-detail-actions';
+import food from '../food.jpg';
 import '../styling/nutriResult-details.css';
 
-export default class NutriModal extends React.Component{
+export class NutriModal extends React.Component{
   state = {
-    foodId: '',
     select: '',
-    data: null,
-    error: null,
-    loading: false
-  }
+    // data: null,
+    // error: null,
+    // loading: false
+  };
 
   componentDidMount() {
     const {food: {foodId}, measures} = this.props;
 
-    this.setState({
-        select: measures[0].uri,
-        foodId,
-        loading: true
-      },
-      () => {
-        const data = this.createReqBody(foodId, this.state.select);
-        this.getNutriData(data);
-      }
-    )
-  }
+    this.setState(
+      {select: measures[0].uri},
+      () => this.handleRequest(foodId, this.state.select)
+    );
+  };
+
+  handleRequest = (foodId, selectVal) => {
+    const data = this.createReqBody(foodId, selectVal);
+    this.props.dispatch(getNutriData(data));
+  };
 
   createReqBody = (foodId, measureURI) => {
     return {
       ingredients: 
-      [
-        {
-          quantity: 1,
-          measureURI,
-          foodId
-        }
-      ],
-      yield : 1
+        [{quantity: 1, measureURI, foodId}],
+        yield : 1
     };
-  }
+  };
 
-  getNutriData = data => {
-    const options = {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(data)
-    };
+  // getNutriData = data => {
+  //   const options = {
+  //     method: 'POST',
+  //     headers: {'Content-Type': 'application/json'},
+  //     body: JSON.stringify(data)
+  //   };
 
-    fetch(
-      'http://localhost:8080/nutrition',
-      options
-    )
-    .then(res => normalizeRes(res))
-    .then(this.onSuccess)
-    .catch(this.onError);
-  }
+  //   fetch(
+  //     'http://localhost:8080/nutrition',
+  //     options
+  //   )
+  //   .then(res => normalizeRes(res))
+  //   .then(this.onSuccess)
+  //   .catch(this.onError);
+  // }
 
-  onSuccess = res => {
-    this.setState({
-      data: res,
-      loading: false
-    });
-  }
+  // onSuccess = res => {
+  //   this.setState({
+  //     data: res,
+  //     loading: false
+  //   });
+  // }
 
-  onError = err => {
-    this.setState({
-      error: err,
-      loading: false
-    })
-  }
+  // onError = err => {
+  //   this.setState({
+  //     error: err,
+  //     loading: false
+  //   })
+  // }
 
-  handleChange = e => {
-    const {foodId} = this.state;
+  handleChange = ({target: {value}}) => {
+    const {foodId} = this.props.food;
     this.setState(
-      {
-        select: e.target.value,
-        loading: true
-      },
-      ()=> {
-        let data = this.createReqBody(foodId, this.state.select);
-        this.getNutriData(data);
-      }
+      {select: value},
+      () => this.handleRequest(foodId, this.state.select)
     );
-  } 
+  };
 
   renderOptions = () => {
     return this.props.measures.map(this.mapMeasure);
@@ -94,11 +81,9 @@ export default class NutriModal extends React.Component{
     return <option key={uri} value={uri}>{label}</option>
   }
 
-  renderNutri = () => {
-    const {totalNutrients} = this.state.data;
-
+  renderNutri = ({totalNutrients}) => {
     let nutriData = [];
-    for (let nutrient in totalNutrients) {
+    for (const nutrient in totalNutrients) {
       nutriData.push(
         <NutriDetailLi key={nutrient} {...totalNutrients[nutrient]} />
       )
@@ -109,15 +94,10 @@ export default class NutriModal extends React.Component{
 
   render() {
     const {
-      food: {
-        label,
-        image,
-        brand
-      },
-      closeModal
+      food: {label, image, brand},
+      closeModal,
+      nutriDetail: {loading, data, error}
     } = this.props;
-
-    const {loading, error, data} = this.state;  
 
     return (
       <div className='modal-backdrop'>
@@ -151,7 +131,7 @@ export default class NutriModal extends React.Component{
                     <strong className='nutrient-title'>Total Weight:</strong>{' '}
                     <span>{Math.round(data.totalWeight * 100 ) / 100} g</span>
                   </li>
-                  {this.renderNutri()}
+                  {this.renderNutri(data)}
                 </ul>
                 : 
                 null
@@ -172,3 +152,7 @@ export default class NutriModal extends React.Component{
     )
   }
 }
+
+const mapStateToProps = ({nutriDetail}) => ({nutriDetail});
+
+export default connect(mapStateToProps)(NutriModal);
