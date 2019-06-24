@@ -14,7 +14,7 @@ export default function Landing(props) {
 
       <section className='landing-intro'>
         <div className='intro-wrapper'>
-          <h2>Bet Fit.<br/>Eat Well.<br/>Get Swole.</h2>
+          <h2>Be Fit.<br/>Eat Well.<br/>Get Swole.</h2>
           <p>{introText}</p>
         </div>
         <p><Link className='intro-login' to='/login'>Login</Link> to begin.<br/>
