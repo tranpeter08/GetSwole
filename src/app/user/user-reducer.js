@@ -12,10 +12,9 @@ const initialState = {
   profile: ''
 }
 
-const userReducer = (state = initialState, action) => {
-  const {profile, error} = action;
+const userReducer = (state = initialState, {type, profile, error}) => {
 
-  switch(action.type) {
+  switch(type) {
     case GET_PROFILE_REQUEST:
       return {...state, loading: true};
     case GET_PROFILE_SUCCESS:
@@ -28,7 +27,7 @@ const userReducer = (state = initialState, action) => {
       return {...state, loading: false, error};
     default:
       return state;
-  };
-}
+  }
+};
 
 export default userReducer;
