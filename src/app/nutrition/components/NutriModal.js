@@ -7,10 +7,7 @@ import '../styling/nutriResult-details.css';
 
 export class NutriModal extends React.Component{
   state = {
-    select: '',
-    // data: null,
-    // error: null,
-    // loading: false
+    select: ''
   };
 
   componentDidMount() {
@@ -34,36 +31,6 @@ export class NutriModal extends React.Component{
         yield : 1
     };
   };
-
-  // getNutriData = data => {
-  //   const options = {
-  //     method: 'POST',
-  //     headers: {'Content-Type': 'application/json'},
-  //     body: JSON.stringify(data)
-  //   };
-
-  //   fetch(
-  //     'http://localhost:8080/nutrition',
-  //     options
-  //   )
-  //   .then(res => normalizeRes(res))
-  //   .then(this.onSuccess)
-  //   .catch(this.onError);
-  // }
-
-  // onSuccess = res => {
-  //   this.setState({
-  //     data: res,
-  //     loading: false
-  //   });
-  // }
-
-  // onError = err => {
-  //   this.setState({
-  //     error: err,
-  //     loading: false
-  //   })
-  // }
 
   handleChange = ({target: {value}}) => {
     const {foodId} = this.props.food;
