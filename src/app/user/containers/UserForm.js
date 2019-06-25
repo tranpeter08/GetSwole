@@ -13,7 +13,6 @@ export class UserForm extends React.Component{
   };
 
   onSubmit = data => {
-    console.log('data', data)
     this.props.dispatch(updateProfile(data))
       .then(isSuccessful => 
         isSuccessful ? this.setState({success: true}) : null
