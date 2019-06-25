@@ -8,49 +8,13 @@ import '../styling/nutrition.css';
 
 export class Nutrition extends React.Component{
   state = {
-    // text: '',
-    // loading: false,
-    // results: '',
-    // error: '',
     modal: false,
-    modalData: '',
-    // hasNext: false
+    modalData: ''
   };
 
   handleSearch = term => {
     this.props.dispatch(getNutrition(term));
   }
-
-  // getResults = term => {
-  //   fetch(
-  //     `${API_BASE_URL}/nutrition?ingr=${term}`,
-  //     {
-  //       method: 'GET',
-  //       headers: {'Content-Type': 'application/json'}
-  //     }
-  //   )
-  //   .then(res => normalizeRes(res))
-  //   .then(this.onSuccess)
-  //   .catch(this.onError);
-  // }
-
-  // onSuccess = ({hints, text, hasNext}) => {
-  //   this.setState((state, props) => ({
-  //       loading: false,
-  //       results: hints,
-  //       text,
-  //       hasNext
-  //     })
-  //   );
-  // }
-
-  // onError = err => {
-  //   console.error(err);
-  //   this.setState({
-  //     loading: false,
-  //     error: err
-  //   });
-  // }
 
   renderResults = results => {
     return results.map((item, index) =>
