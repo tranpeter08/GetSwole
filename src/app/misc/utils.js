@@ -59,3 +59,5 @@ export const queryStr = queryObj => {
 
   return arr.join('&');
 }
+
+export const TEST_AUTH_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7InVzZXJuYW1lIjoidGVzdFVzZXIiLCJ1c2VySWQiOiJ0ZXN0VXNlcjEyMzQifSwiaWF0IjoxNTYxNDYzNTYwLCJleHAiOjE1NjE0NjcxNjAsInN1YiI6InRlc3RVc2VyIn0.domoQ8lHEb15Cm3oS4WgsaUdnSa-LMRQ0f4IYhhlp6w';

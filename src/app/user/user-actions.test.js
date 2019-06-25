@@ -1,50 +1,78 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import fetchMock from 'fetch-mock';
 import {
-  userRequest, userSuccess, userError,
-  getProfile, updateProfile,
-  USER_REQUEST, USER_SUCCESS, USER_ERROR
+  GET_PROFILE_REQUEST, GET_PROFILE_SUCCESS,
+  getProfileRequest, getProfileSuccess,
+  UPDATE_PROFILE_REQUEST, UPDATE_PROFILE_SUCCESS,
+  updateProfileRequest, updateProfileSuccess,
+  USER_ERROR,
+  userError,
+  getProfile, updateProfile
 } from './user-actions';
 import {API_BASE_URL} from '../misc/config';
 import {fetchOptions} from '../misc/utils';
 
 describe('user-actions', () => {
-  describe('userRequest action creator', () => {
-    const USERS_REQUEST = 'USERS_REQUEST';
+  describe('getProfileRequest', () => {
 
-    it('returns the correct string for action USER_REQUEST', () => {
-      expect(USER_REQUEST).not.toEqual('USER_REQUESt');
-      expect(USER_REQUEST).toEqual('USER_REQUEST');
+    it('returns the correct string for action GET_PROFILE_REQUEST', () => {
+      expect(GET_PROFILE_REQUEST).not.toEqual('GET_PROFILE_SUCCESS');
+      expect(GET_PROFILE_REQUEST).toEqual('GET_PROFILE_REQUEST');
     });
 
     it('returns the correct action for userRequest', () => {
-      expect(userRequest()).not.toEqual({type: USERS_REQUEST});
-      expect(userRequest()).toEqual({type: USER_REQUEST});
+      expect(getProfileRequest()).not.toEqual({type: GET_PROFILE_SUCCESS});
+      expect(getProfileRequest()).toEqual({type: GET_PROFILE_REQUEST});
     });
   });
 
-  describe('userSuccess action creator', () => {
-    const USERS_SUCCESS = 'USERS_SUCCESS';
+  describe('getProfileSuccess', () => {
     const profile = {username: 'test'};
 
-    it('returns the correct string for action USER_SUCCESS', () => {
-      expect(USER_SUCCESS).not.toEqual(USERS_SUCCESS);
-      expect(USER_SUCCESS).toEqual('USER_SUCCESS');
+    it('returns the correct string for action GET_PROFILE_SUCCESS', () => {
+      expect(GET_PROFILE_SUCCESS).not.toEqual('GET_PROFILE_REQUEST');
+      expect(GET_PROFILE_SUCCESS).toEqual('GET_PROFILE_SUCCESS');
     });
 
-    it('returns the correct action for userRequest', () => {
-      expect(userSuccess()).not.toEqual({type: USER_SUCCESS, username: ''});
-      expect(userSuccess()).toEqual({type: USER_SUCCESS});
-      expect(userSuccess(profile)).not.toEqual({type: USER_SUCCESS, username: 'test'});
-      expect(userSuccess(profile)).toEqual({type: USER_SUCCESS, profile});
+    it('returns the correct action for getProfileSuccess', () => {
+      expect(getProfileSuccess()).not.toEqual({type: GET_PROFILE_SUCCESS, username: ''});
+      expect(getProfileSuccess()).toEqual({type: GET_PROFILE_SUCCESS});
+      expect(getProfileSuccess(profile)).not.toEqual({type: GET_PROFILE_SUCCESS, username: 'test'});
+      expect(getProfileSuccess(profile)).toEqual({type: GET_PROFILE_SUCCESS, profile});
+    });
+  });
+
+  describe('updateProfileRequest', () => {
+
+    it('returns the correct string for action UPDATE_PROFILE_REQUEST', () => {
+      expect(UPDATE_PROFILE_REQUEST).not.toEqual('GET_PROFILE_REQUEST');
+      expect(UPDATE_PROFILE_REQUEST).toEqual('UPDATE_PROFILE_REQUEST');
+    });
+
+    it('returns the correct action for updateProfileRequest', () => {
+      expect(updateProfileRequest()).not.toEqual({type: GET_PROFILE_SUCCESS});
+      expect(updateProfileRequest()).toEqual({type: UPDATE_PROFILE_REQUEST});
+    });
+  });
+
+  describe('updateProfileSuccess', () => {
+    const profile = {username: 'test'};
+
+    it('returns the correct string for action UPDATE_PROFILE_SUCCESS', () => {
+      expect(UPDATE_PROFILE_SUCCESS).not.toEqual('GET_PROFILE_SUCCESS');
+      expect(UPDATE_PROFILE_SUCCESS).toEqual('UPDATE_PROFILE_SUCCESS');
+    });
+
+    it('returns the correct action for updateProfileSuccess', () => {
+      expect(updateProfileSuccess()).not.toEqual({type: GET_PROFILE_SUCCESS});
+      expect(updateProfileSuccess()).toEqual({type: UPDATE_PROFILE_SUCCESS});
     });
   });
 
   describe('userError action creator', () => {
     const USERS_ERROR = 'USERS_ERROR';
     const error = {message: 'test message', code: 400};
-    const _object = {type: USERS_ERROR, error: 'test'};
+    const wrongAction = {type: USERS_ERROR, error: 'test'};
 
 
     it('returns the correct string for action USER_ERROR', () => {
@@ -53,9 +81,9 @@ describe('user-actions', () => {
     });
 
     it('returns the correct action for userRequest', () => {
-      expect(userError()).not.toEqual(_object);
+      expect(userError()).not.toEqual(wrongAction);
       expect(userError()).toEqual({type: USER_ERROR});
-      expect(userError(error)).not.toEqual(_object);
+      expect(userError(error)).not.toEqual(wrongAction);
       expect(userError(error)).toEqual({type: USER_ERROR, error});
     });
   });
@@ -65,7 +93,7 @@ describe('user-actions', () => {
     const mockStore = configureMockStore(middlewares);
     const userId = 'fakeId1234'
     
-    describe('getProfile action creator', () => {
+    describe('getProfile', () => {
       const profile = {firstname: 'test1', lastName: 'test2'};
       const store = mockStore({auth: {userId}, users: ''});
       beforeEach(() => {
@@ -75,11 +103,10 @@ describe('user-actions', () => {
 
       it('returns the correct actions on successful fetch request', () => {
         fetch.mockResponse(JSON.stringify(profile));
-        // fetchMock.post(`${API_BASE_URL}/users`, {body: newUser});
 
         const expectedActions = [
-          {type: USER_REQUEST},
-          {type: USER_SUCCESS, profile}
+          {type: GET_PROFILE_REQUEST},
+          {type: GET_PROFILE_SUCCESS, profile}
         ];
   
         return (
@@ -109,13 +136,13 @@ describe('user-actions', () => {
         fetch.mockReject(error);
   
         const expectedActions = [
-          {type: USER_REQUEST},
+          {type: GET_PROFILE_REQUEST},
           {type: USER_ERROR, error}
         ];
 
         const wrongActions = [
-          {type: USER_REQUEST},
-          {type: USER_SUCCESS, profile: error}
+          {type: GET_PROFILE_REQUEST},
+          {type: USER_ERROR, profile: error}
         ];
   
         return store.dispatch(getProfile())
@@ -126,7 +153,7 @@ describe('user-actions', () => {
       });
     });
 
-    describe('updateProfile action creator', () => {
+    describe('updateProfile', () => {
       const profile = {firstName: 'test1', lastName: 'test2'};
       const newProfile = {firstName: 'testA', lastName: 'testB'};
       const store = mockStore({
@@ -143,15 +170,14 @@ describe('user-actions', () => {
         fetch.mockResponse(JSON.stringify(newProfile));
 
         const expectedActions = [
-          {type: USER_REQUEST},
-          {type: USER_REQUEST},
-          {type: USER_SUCCESS, profile: newProfile}
+          {type: UPDATE_PROFILE_REQUEST},
+          {type: UPDATE_PROFILE_SUCCESS},
+          {type: GET_PROFILE_REQUEST}
         ];
 
         const wrongActions = [
-          {type: USER_REQUEST},
-          {type: USER_REQUEST},
-          {type: USER_SUCCESS, profile}
+          {type: UPDATE_PROFILE_REQUEST},
+          {type: GET_PROFILE_SUCCESS, profile}
         ];
 
         return store.dispatch(updateProfile(newProfile))
@@ -178,14 +204,14 @@ describe('user-actions', () => {
         fetch.mockReject(error);
 
         const expectedActions = [
-          {type: USER_REQUEST},
+          {type: UPDATE_PROFILE_REQUEST},
           {type: USER_ERROR, error}
         ];
 
         const wrongActions = [
-          {type: USER_REQUEST},
-          {type: USER_REQUEST},
-          {type: USER_SUCCESS, profile: error}
+          {type: UPDATE_PROFILE_REQUEST},
+          {type: UPDATE_PROFILE_SUCCESS},
+          {type: GET_PROFILE_REQUEST}
         ];
 
         return store.dispatch(updateProfile(newProfile))

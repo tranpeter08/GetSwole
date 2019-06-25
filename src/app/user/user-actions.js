@@ -22,7 +22,7 @@ export const userError = (error) => ({
 
 export const getProfile = () => (dispatch, getState) => {
   dispatch(getProfileRequest());
-  // separate action for get profile
+  
   const {userId} = getState().auth;
   return fetch(`${API_BASE_URL}/users/profile/${userId}`, fetchOptions('GET'))
     .then(normalizeRes)

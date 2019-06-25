@@ -1,5 +1,9 @@
 import userReducer from './user-reducer'; 
-import {userRequest, userSuccess, userError} from './user-actions';
+import {
+  getProfileRequest, getProfileSuccess,
+  updateProfileRequest, updateProfileSuccess,
+  userError
+} from './user-actions';
 
 describe('userReducer', () => {
   const initialState = {
@@ -25,20 +29,20 @@ describe('userReducer', () => {
     expect(userReducer(undefined, {})).toEqual(initialState);
   });
 
-  it('returns the correct state on userRequest', () => {
+  it('returns the correct state on getProfileRequest', () => {
     expectedState.loading = true;
 
-    const state = userReducer(undefined, userRequest());
+    const state = userReducer(undefined, getProfileRequest());
 
     expect(state).not.toEqual(initialState);
     expect(state).toEqual(expectedState);
   });
 
-  it('returns the correct state on userSuccess', () => {
+  it('returns the correct state on getProfileSuccess', () => {
     const profile = {firstName: 'test1', lastName: 'test2'};
     expectedState.profile = profile;
 
-    const state = userReducer(undefined, userSuccess(profile));
+    const state = userReducer(undefined, getProfileSuccess(profile));
 
     expect(state).not.toEqual(initialState);
     expect(state).toEqual(expectedState);

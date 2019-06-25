@@ -1,11 +1,10 @@
 'use strict';
 import React from 'react';
 import {shallow, mount} from 'enzyme';
-import { Login} from './Login';
-import {logIn} from '../../auth/auth-actions';
+import {Login} from './Login';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import {AUTH_REQUEST} from '../../auth/auth-actions';
+import {AUTH_LOGIN_REQUEST} from '../../auth/auth-actions';
 
 describe('<Login />', () => {
   const props = {
@@ -23,7 +22,7 @@ describe('<Login />', () => {
       shallow(<Login {...props} />);
   });
 
-  it('onSubmit dispatches', () => {
+  it('onSubmit dispatches the correct actions', () => {
     const middlewares = [thunk];
     const mockStore = configureMockStore(middlewares);
     const store = mockStore({auth: {loading: '', error: '', username: ''}})
@@ -33,13 +32,11 @@ describe('<Login />', () => {
     instance = wrapper.instance();
 
     const expectedActions = [
-      {type: AUTH_REQUEST}
+      {type: AUTH_LOGIN_REQUEST}
     ];
     
     instance.onSubmit({username, password});
     expect(store.getActions()).toEqual(expectedActions);
-    // expect(props.dispatch).toHaveBeenCalledWith(logIn(username, password));
-    // check instead for authRuquest action
   })
 
   it('displays the error if there is an error', () => {

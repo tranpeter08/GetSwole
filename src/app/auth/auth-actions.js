@@ -55,28 +55,26 @@ const storeToken = (token, dispatch) => {
 export const logIn = (username, password) => dispatch => {
   dispatch(authLoginRequest());
   return fetch(
-    `${API_BASE_URL}/auth/login`,
+    `${API_BASE_URL}/auth/login`, 
     fetchOptions('POST', {username, password}, true)
-  )
-  .then(normalizeRes)
-  .then(({authToken}) => {
-    storeToken(authToken, dispatch)
-  })
-  .catch(err => {
-    console.error('LOG IN ERROR==>',err);
-    dispatch(authError(err));
-    if (err.reason === 'LoginError') {
-      return Promise.reject( 
-        new SubmissionError({
-          [err.location] : err.message,
-          _error: '* Incorrect username or password.'
-        })
-      )
-    }
-    return Promise.reject( new SubmissionError({
-      _error: 'Server Error...'
-    }))
-  });
+    )
+    .then(normalizeRes)
+    .then(({authToken}) => {
+      storeToken(authToken, dispatch);
+    })
+    .catch(error => {
+      dispatch(authError(error));
+      if (error.reason === 'validationError') {
+        console.error('ERROR:', error);
+        return Promise.reject( 
+          new SubmissionError({
+            [error.location[0]]: error.message,
+            _error: 'Validation error...'
+          })
+        );
+      }
+      return error;
+    });
 }
 
 export const createUser = data => dispatch => {
@@ -119,7 +117,7 @@ export const refreshToken = () => dispatch => {
     `${API_BASE_URL}/auth/refresh`,
     fetchOptions('POST')
   )
-  .then(res => normalizeRes(res))
+  .then(normalizeRes)
   .then(({authToken}) => storeToken(authToken, dispatch))
   .catch(err => {
     console.error(err);
