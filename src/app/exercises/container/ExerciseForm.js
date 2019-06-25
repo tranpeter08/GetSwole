@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm, Field, formValueSelector } from 'redux-form';
 import ExerciseInput from '../components/ExerciseInput';
 import ExerciseResist from './ExerciseResist';
 import SuccessStatus from '../../misc/components/SuccessStatus';
@@ -34,7 +34,7 @@ export class ExerciseForm extends Component {
   onSubmit = data => {
     if (data.exerciseName) {
     const {action, dispatch, workoutId, exerciseId} = this.props;
-
+      console.log(data);
       if (action === 'Adding') {
       return dispatch(createExercise(workoutId, data))
         .then(this.handleRes);
@@ -69,6 +69,8 @@ export class ExerciseForm extends Component {
       anyTouched,
       exercise: {error}
     } = this.props;
+
+    console.log('exercise form',this.props);
 
     return (
     <div className='modal-backdrop'>
@@ -143,8 +145,11 @@ export class ExerciseForm extends Component {
   }
 }
 
+const selector = formValueSelector('ExerciseForm');
+
 const mapStateToProps = ({exercise}) => ({exercise});
 
 export default connect(mapStateToProps)(reduxForm({
-  form: 'ExerciseForm'
+  form: 'ExerciseForm',
+  initialValues: {resistUnit: 'lb'}
 })(ExerciseForm));
