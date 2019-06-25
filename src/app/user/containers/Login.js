@@ -92,10 +92,7 @@ export class Login extends Component {
   };
 };
 
-export const mapStateToProps = ( state, props) => {
-  const {auth: {token, ..._auth}} = state;
-  return ({auth: _auth})
-};
+export const mapStateToProps = ({auth: {token, ...authProps}}) => ({auth: authProps});
 
 export const FormLogin = reduxForm({
   form: 'logIn',

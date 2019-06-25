@@ -1,11 +1,13 @@
 import React from 'react';
 import {shallow} from 'enzyme';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import {AUTH_CREATE_USER_REQUEST, AUTH_LOGIN_REQUEST} from '../../auth/auth-actions';
 import {Register, mapStateToProps} from './Register';
 
 describe('<Register />', () => {
   let props,
-    wrapper,
-    dispatch = jest.fn();
+    wrapper;
 
   beforeAll(() => {
     props = { 
@@ -18,10 +20,9 @@ describe('<Register />', () => {
         loading: false, 
         username: ''
       }
-      
-    }
+    };
 
-    wrapper = shallow(<Register dispatch={dispatch} {...props} />)
+    wrapper = shallow(<Register {...props} />);
   });
 
   
@@ -29,41 +30,59 @@ describe('<Register />', () => {
     shallow(<Register {...props}/>)
   });
 
-  it('dispatches createUser when onSubmit is called', () => {
-    let data = {};
-    wrapper.instance().onSubmit(data);
-    // how to test dispatch with an action creator passed as an argument?
-    // expect(dispatch).toHaveBeenCalledWith(createUser(data));
-    expect(dispatch).toHaveBeenCalled();
+  it('dispatches the correct actions on onSubmit', () => {
+    const middlewares = [thunk];
+    const mockStore = configureMockStore(middlewares);
+    const store = mockStore();
+
+    const wrapperWithStore = shallow(<Register dispatch={store.dispatch} {...props}/>);
+
+    wrapperWithStore.instance().onSubmit({});
+
+    const expectedActions = [
+      {type: AUTH_CREATE_USER_REQUEST}
+    ];
+
+    const wrongActions = [
+      {type: AUTH_LOGIN_REQUEST}
+    ];
+
+    expect(store.getActions()).not.toEqual(wrongActions);
+    expect(store.getActions()).toEqual(expectedActions);
   });
 
   it('redirects once a user is logged in', () => {
-    let username = 'tester',
-    newProps = {
+
+    let newProps = {
       user : {
-        username,
+        username: 'testUser',
         error: '',
         loading: false
-    }};
+      }
+    };
+
+    expect(wrapper.exists('.register-main')).toBe(true);
 
     wrapper.setProps(newProps);
     expect(wrapper.exists('.register-main')).toBe(false);
   });
 
   it('displays an error if there is an error', () => {
-    let error = {
+    const error = {
       message: 'test message',
       location: ['Field 1'],
       reason: 'serverError'
-    },
-    newProps = {
+    };
+
+    const newProps = {
       user: {
         error,
         username: '',
         loading: false
       }
-    },
-    _errorMessage = `* ${error.message} at ${error.location[0]}`;
+    };
+
+    const _errorMessage = `* ${error.message} at ${error.location[0]}`;
 
     expect(wrapper.exists('.error')).toBe(false);
 
@@ -95,9 +114,9 @@ describe('<Register />', () => {
         loading,
         error
       }
-    }
-
-    const mappedProps = mapStateToProps(mockState);
-    expect(mappedProps).toEqual(_mappedProps);
+    };
+    
+    
+    expect(mapStateToProps(mockState)).toEqual(_mappedProps);
   });
 });

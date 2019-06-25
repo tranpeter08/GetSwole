@@ -237,9 +237,17 @@ describe('auth-actions', () => {
 
               const fetchArgs = fetch.mock.calls[0];
 
+            expect(fetchArgs[0]).not.toEqual(`${API_BASE_URL}/auth/login`);
+            expect(fetchArgs[0]).toEqual(`${API_BASE_URL}/users`);
+            expect(fetchArgs[1])
+              .not.toEqual(fetchOptions('PUT', newUser, true));
+            expect(fetchArgs[1])
+              .toEqual(fetchOptions('POST', newUser, true));
+
+              expect(store.getActions()).not.toEqual(wrongActions);
               expect(store.getActions()).toEqual(expectedActions);
             })
-        )
+        );
       });
 
       it('returns the correct actions on a failed fetch request', () => {

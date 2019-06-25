@@ -1,12 +1,13 @@
 'use strict';
 import React from 'react';
-import {shallow, mount} from 'enzyme';
-import {Login} from './Login';
+import {shallow} from 'enzyme';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import {AUTH_LOGIN_REQUEST} from '../../auth/auth-actions';
+import {Login, mapStateToProps} from './Login';
+import {AUTH_LOGIN_REQUEST, AUTH_CREATE_USER_REQUEST} from '../../auth/auth-actions';
 
 describe('<Login />', () => {
+
   const props = {
     auth: {
       error: '',
@@ -18,6 +19,12 @@ describe('<Login />', () => {
     invalid: false
   };
 
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(<Login {...props} />);
+
+  });
+
   it('should render without crashing', ()=> {
       shallow(<Login {...props} />);
   });
@@ -26,21 +33,22 @@ describe('<Login />', () => {
     const middlewares = [thunk];
     const mockStore = configureMockStore(middlewares);
     const store = mockStore({auth: {loading: '', error: '', username: ''}})
-    let wrapper = shallow(<Login {...props} dispatch={store.dispatch} />),
+    const wrapperWithStore = shallow(<Login {...props} dispatch={store.dispatch} />),
     username = 'hello123',
     password = 'person123',
-    instance = wrapper.instance();
+    instance = wrapperWithStore.instance();
 
-    const expectedActions = [
-      {type: AUTH_LOGIN_REQUEST}
-    ];
+    const expectedActions = [{type: AUTH_LOGIN_REQUEST}];
+
+    const wrongActions = [{type: AUTH_CREATE_USER_REQUEST}];
     
     instance.onSubmit({username, password});
+
+    expect(store.getActions()).not.toEqual(wrongActions);
     expect(store.getActions()).toEqual(expectedActions);
   })
 
   it('displays the error if there is an error', () => {
-    const wrapper = shallow(<Login {...props} />);
     expect(wrapper.exists('.error')).toBe(false);
     
     const authErr = {
@@ -58,5 +66,30 @@ describe('<Login />', () => {
     let errorMessage = wrapper.find('.error');
     expect(errorMessage.text().includes(authErr.auth.error.message)).toBe(true);
 
-  })
+  });
+
+  it('redirects once user is logged in', () => {
+    const mainClass = '.login-main';
+
+    expect(wrapper.exists(mainClass)).toBe(true);
+
+    wrapper.setProps({auth: {username: 'testUser', error: ''}});
+    expect(wrapper.exists(mainClass)).toBe(false);
+  });
+
+  it('maps the correct props from store', () => {
+      const state = { 
+        auth: {
+          username: 'testUser',
+          userId: 'user1234',
+          token: 'fakeJWT',
+          loading: false,
+          error: ''
+      }};
+
+      const {auth: {token, ...expectedProps}}  = state;
+
+      expect(mapStateToProps(state)).not.toEqual({auth: state.auth});
+      expect(mapStateToProps(state)).toEqual({auth: expectedProps});
+  });
 });

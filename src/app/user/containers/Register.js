@@ -31,14 +31,13 @@ export class Register extends Component {
 
   componentDidUpdate(prevProps) {
     const {error} = this.props.user;
-    if (prevProps.user.error !== error) {
-      if (error !==null && error.location) {
+    
+    if (error && prevProps.user.error !== error && error.location) {
         const element = document.getElementsByName(error.location)[0]
         if (element) {
           element.focus();
         }
       }
-    }
   }
 
   onSubmit(data) {

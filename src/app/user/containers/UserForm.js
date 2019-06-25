@@ -10,7 +10,7 @@ import '../style/userForm.css';
 export class UserForm extends React.Component{
   state={
     success: false
-  }
+  };
 
   onSubmit = data => {
     console.log('data', data)
@@ -18,7 +18,7 @@ export class UserForm extends React.Component{
       .then(isSuccessful => 
         isSuccessful ? this.setState({success: true}) : null
       );
-  }
+  };
 
   render() {
     const {
@@ -28,7 +28,6 @@ export class UserForm extends React.Component{
       submitting,
       user: {error}
     } = this.props;
-    console.log(this.props)
 
     return (
       <div className='modal-backdrop'>
@@ -63,15 +62,14 @@ export class UserForm extends React.Component{
   }
 }
 
-const selector = formValueSelector('UserForm');
-
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
+  const selector = formValueSelector('UserForm');
 
   return {
     heightUnitValue: selector(state, 'heightUnit'),
     user: state.user
-  }
-}
+  };
+};
 
 const DecoratedUserForm = reduxForm({
     form: 'UserForm'
