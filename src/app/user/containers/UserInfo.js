@@ -19,10 +19,10 @@ export class UserInfo extends React.Component {
     this.setState((state) => ({edit: !state.edit}));
   }
 
-  renderForm(data) {
+  renderForm(profile) {
     return this.state.edit ? 
       <UserForm 
-        initialValues={data} 
+        initialValues={profile} 
         toggleForm={this.toggleForm} /> 
       : 
       null
@@ -30,11 +30,11 @@ export class UserInfo extends React.Component {
 
   normalizeHeight({height, heightUnit, inches}) {
     
-    if (heightUnit === 'ft' && inches) {
+    if (height && heightUnit === 'ft' && inches) {
       return `${height}' ${inches}"`
     }
 
-    if (heightUnit === 'ft' && height && !inches) {
+    if (height && heightUnit === 'ft' && !inches) {
       return `${height}'`
     };
 
@@ -46,18 +46,16 @@ export class UserInfo extends React.Component {
       return '';
     }
 
-    // `6' ; 6'6" ; 6cm ; 6" ; ''`
-
     return `${height} ${heightUnit}`;
   }
 
   normalizeWeight({weight, weightUnit}) {
-    if (!weight) {
-      return '';
-    }
+    if (weight && weightUnit) {
+      return `${weight} ${weightUnit}`
+    };
 
-    return `${weight} ${weightUnit}`; 
-  }
+    return ''; 
+  };
 
   renderUserInfo(profile) {
     if (profile) {
@@ -72,9 +70,15 @@ export class UserInfo extends React.Component {
       return (
         <div className='userInfo-detail-container'>
           <h2>{name.trim()}</h2>
-          <p>Height: {this.normalizeHeight(profile)}</p>
-          <p>Weight: {this.normalizeWeight(profile)}</p>
-          <p>Body Fat: {bodyFat}%</p>
+          <p>
+            Height:{' '}
+            <span className='full-height'>{this.normalizeHeight(profile)}</span>
+          </p>
+          <p>
+            Weight:{' '}
+            <span className='full-weight'>{this.normalizeWeight(profile)}</span>
+          </p>
+          <p>Body Fat: <span className='bodyFat'>{bodyFat}</span>%</p>
           <div className='profile-button-container'>
             <button 
               type='button'
@@ -104,7 +108,6 @@ export class UserInfo extends React.Component {
     return (
       <section className='userInfo-section'>
         {this.renderForm(profile)}
-        {/* <img className='userInfo-img' src='https://cdn.pixabay.com/photo/2014/10/22/17/25/stretching-498256_1280.jpg' alt='User' /> */}
         <div className='profile-container'>
           {this.renderUserInfo(profile)}
           {error && <ErrorMessage message={error.message} />}
@@ -114,7 +117,7 @@ export class UserInfo extends React.Component {
   }
 }
 
-const mapStateToProps = ({user}) => {
+export const mapStateToProps = ({user}) => {
   return {user}
 };
 

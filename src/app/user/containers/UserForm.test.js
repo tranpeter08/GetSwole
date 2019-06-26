@@ -72,5 +72,5 @@ describe('<UserForm />', () => {
     wrapper.setProps(newProps);
 
     expect(wrapper.contains(errorComponent)).toEqual(true);
-  })
+  });
 });

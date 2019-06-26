@@ -8,8 +8,8 @@ const requiresLogin = Component => {
     render() {
       const {hasToken, loading, error, ...otherProps} = this.props.auth;
 
-      if (!hasToken) {
-        return <Redirect to='/' />;
+      if (loading) {
+        return <main className='authenticating'><h2>Authenticating...</h2></main>;
       };
 
       if (error) {
@@ -19,15 +19,11 @@ const requiresLogin = Component => {
         </main>
       }
 
-      if (loading) {
-        return <div>Authenticating...</div>;
-      };
-
       if (hasToken) {
         return <Component {...otherProps} />;
-      }
+      };
 
-      return <div></div>;
+      return <Redirect to='/' />;
     };
   };
 
@@ -36,7 +32,7 @@ const requiresLogin = Component => {
 
   const mapStateToProps = ({auth}) => ({
     auth: {
-      hasToken: auth.token !== '',
+      hasToken: auth.token ? true : false,
       loading: auth.loading,
       error: auth.error
     }

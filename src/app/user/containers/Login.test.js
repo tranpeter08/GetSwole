@@ -26,7 +26,7 @@ describe('<Login />', () => {
   });
 
   it('should render without crashing', ()=> {
-      shallow(<Login {...props} />);
+    shallow(<Login {...props} />);
   });
 
   it('onSubmit dispatches the correct actions', () => {
