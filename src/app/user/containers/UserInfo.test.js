@@ -103,7 +103,7 @@ describe('<UserInfo />', () => {
     } = profile;
 
     expect(defaultWrapper.find('h2').text())
-      .toEqual(`${firstName} ${lastName}`);
+      .toEqual(`Name: ${firstName} ${lastName}`);
     expect(defaultWrapper.find('.full-height').text())
       .toEqual(`${height}' ${inches}"`);
     expect(defaultWrapper.find('.full-weight').text())
@@ -161,4 +161,25 @@ describe('<UserInfo />', () => {
     expect(weightVal(profile)).toEqual(`${profile.weight} ${profile.weightUnit}`);
     expect(weightVal(profile)).not.toEqual(`${profile.weight}`);
   });
+
+  it('maps the right state to props', () => {
+    const state = {
+      user: {
+        profile: {
+          firstName: 'John',
+          lastName: 'Doe',
+          height: 6,
+          heightUnit: 'ft'
+        }
+      },
+      auth: {
+        token: 'fakeJWT token'
+      }
+    };
+
+    const {user, auth} = state;
+
+    expect(mapStateToProps(state)).not.toEqual({auth});
+    expect(mapStateToProps(state)).toEqual({user});
+  })
 });

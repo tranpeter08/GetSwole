@@ -69,7 +69,7 @@ export class UserInfo extends React.Component {
     
       return (
         <div className='userInfo-detail-container'>
-          <h2>{name.trim()}</h2>
+          <h2>Name: {name.trim()}</h2>
           <p>
             Height:{' '}
             <span className='full-height'>{this.normalizeHeight(profile)}</span>

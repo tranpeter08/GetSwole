@@ -23,7 +23,6 @@ describe('<Select />', () => {
     }
 
     const wrapper = shallow(<Select {...props}/>);
-    console.log(wrapper.debug());
     wrapper.setProps({options});
 
     let select = wrapper.find('select');
