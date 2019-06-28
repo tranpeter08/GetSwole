@@ -6,7 +6,7 @@ import {notEmpty} from '../../user/validators';
 import {addWorkout, editWorkout, clearErrors} from '../workout-actions';
 import '../styling/workoutForm.css'
 
-class WorkoutForm extends Component {
+export class WorkoutForm extends Component {
   constructor(props) {
     super(props);
     this.node = React.createRef();
@@ -23,9 +23,9 @@ class WorkoutForm extends Component {
   handleClick = e => {
     if(this.node.current.contains(e.target)){
       return;
-    }
+    };
 
-    this.props.setEditing(false)
+    this.props.setEditing(false);
     this.props.dispatch(clearErrors());
   };
 
@@ -41,10 +41,10 @@ class WorkoutForm extends Component {
         return dispatch(editWorkout(data, form))
           .then(this.handleResErr);
       };
-    }
+    };
   };
 
-  handleResErr = resErr => resErr ? null : this.props.setEditing(false);
+  handleResErr = isError =>  isError ? null : this.props.setEditing(false);
 
   onCancel() {
     this.props.setEditing(false);
@@ -100,7 +100,7 @@ class WorkoutForm extends Component {
   };
 };
 
-const mapStateToProps = ({workout}, props) => ({workout});
+export const mapStateToProps = ({workout}, props) => ({workout});
 
 export default connect(mapStateToProps)(reduxForm({
   form: 'WorkoutForm'

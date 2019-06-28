@@ -1,9 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import thunk from 'redux-thunk';
 import configMockStore from 'redux-mock-store';
 import {shallow, mount} from 'enzyme';
-
 import {Delete, mapStateToProps} from './Delete';
 import {WORKOUT_DELETE_REQUEST} from '../../workouts/workout-actions';
 import {EXERCISE_REQUEST} from '../../exercises/exercise-actions';
@@ -40,8 +38,7 @@ describe('<Delete />', () => {
     );
 
     const wrapper = mount(<Delete {...defaultProps} />);
-    const instance = wrapper.instance();
-    const innerNode = ReactDOM.findDOMNode(instance);
+    const innerNode = wrapper.getDOMNode();
 
     map.click({target: innerNode});
     expect(setDelete).not.toHaveBeenCalled();
