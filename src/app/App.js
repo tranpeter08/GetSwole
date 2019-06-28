@@ -22,7 +22,7 @@ class App extends React.Component{
   componentDidMount() {
     if (this.props.hasToken){
       this.props.dispatch(refreshToken());
-    }
+    };
   }
 
   componentDidUpdate(prevProps) {

@@ -6,24 +6,17 @@ import Delete from './Delete';
 import '../styling/workout.css';
 
 export class Workout extends Component {
-  constructor(props){
-    super(props);
-    this.state= {
-      editing: false,
-      deleting: false
-    };
+  state= {
+    editing: false,
+    deleting: false
   };
 
-  setEditing(bool) {
-    this.setState({
-      editing: bool
-    });
+  setEditing(editing) {
+    this.setState({editing});
   };
 
-  setDelete(bool) {
-    this.setState({
-      deleting: bool
-    });
+  setDelete(deleting) {
+    this.setState({deleting});
   };
 
   render() {
@@ -64,12 +57,14 @@ export class Workout extends Component {
       <React.Fragment>
         <h3><Link to={location}>{workoutName}</Link></h3>
         <div className='workout-button-container'>
-          <button 
+          <button
+            className='workout-edit-button'
             type='button' 
             onClick={() => this.setEditing(true)}>
             Edit
           </button>
           <button 
+            className='workout-delete-button'
             type='button' 
             onClick={() => this.setDelete(true)}
           >
@@ -77,9 +72,9 @@ export class Workout extends Component {
           </button>
         </div>
         </React.Fragment>
-    )
+    );
   };
 };
 
-const mapStateToProps = ({auth: {username}}) => ({username});
+export const mapStateToProps = ({auth: {username}}) => ({username});
 export default connect(mapStateToProps)(Workout);

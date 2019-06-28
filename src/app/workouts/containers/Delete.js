@@ -13,32 +13,28 @@ export class Delete extends Component {
     document.removeEventListener('click', this.handleClick, false);
   }
 
-  constructor(props) {
-    super(props);
-    this.node = React.createRef();
-  }
+  node = React.createRef();
 
   handleClick = (e) => {
-    if(this.node.current.contains(e.target)) {
+    if (this.node.current.contains(e.target)) {
       return;
     }
     this.props.setDelete(false);
   }
 
-  onYesDelete() {
-    const {
-      type, 
-      dispatch, 
-      workoutId, 
-      itemId
-    } = this.props;
-
+  onYesDelete({
+    type, 
+    dispatch, 
+    workoutId, 
+    itemId
+  }) {
+    
     if (type === 'workout') {
-      return dispatch(deleteWorkout(itemId))
-    }
+      return dispatch(deleteWorkout(itemId));
+    };
 
     if (type === 'exercise') {
-      return dispatch(deleteExercise(workoutId, itemId))
+      return dispatch(deleteExercise(workoutId, itemId));
     }
   };
 
@@ -47,15 +43,23 @@ export class Delete extends Component {
       type, 
       title, 
       setDelete, 
-      workout: {loading, error}
+      exercise,
+      workout
     } = this.props;
+
+    const loading = type === 'workout' ? workout.loading : exercise.loading;
+    const error = type === 'workout' ? workout.error : exercise.error;
     
-    return(
+    return (
       <div className='' ref={this.node}>
-        <h3 className='delete-header'>Delete {type} "{title}"?</h3>
+        <h3 className='delete-header'>Delete {type} "{title}" ?</h3>
         <div className='delete-button-container'>
-          <button type='button' onClick={() => this.onYesDelete()}>Yes</button>
-          <button type='button' onClick={() => setDelete(false)}>No</button>
+          <button type='button' onClick={() => this.onYesDelete(this.props)}>
+            Yes
+          </button>
+          <button type='button' onClick={() => setDelete(false)}>
+            No
+          </button>
         </div>
         <div className='delete-status'>
           {
@@ -68,6 +72,6 @@ export class Delete extends Component {
   }
 }
 
-const mapStateToProps = ({workout}) => ({workout});
+export const mapStateToProps = ({workout, exercise}) => ({workout, exercise});
 
 export default connect(mapStateToProps)(Delete);

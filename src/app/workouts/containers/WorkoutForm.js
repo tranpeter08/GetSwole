@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { reduxForm, Field} from 'redux-form';
 import WorkoutInput from '../components/WorkoutInput';
 import {notEmpty} from '../../user/validators';
-import {createWorkout, editWorkout, clearErrors} from '../workout-actions';
+import {addWorkout, editWorkout, clearErrors} from '../workout-actions';
 import '../styling/workoutForm.css'
 
 class WorkoutForm extends Component {
@@ -33,7 +33,7 @@ class WorkoutForm extends Component {
     if (data.workoutName) {
       const {action, form, dispatch} = this.props;
       if (action === 'Adding') {
-        return dispatch(createWorkout(data))
+        return dispatch(addWorkout(data))
         .then(this.handleResErr);
       };
 

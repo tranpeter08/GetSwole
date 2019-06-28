@@ -70,7 +70,7 @@ export const editExercise = (workoutId, exrcseId, data) => (dispatch, getState) 
 }
 
 export const deleteExercise = (workoutId, exerciseId) => (dispatch, getState) => {
-  dispatch(exerciseRequest);
+  dispatch(exerciseRequest());
   const {userId} = getState().auth;
   return fetch(
     `${API_BASE_URL}/users/${userId}/workouts/${workoutId}/exercises/${exerciseId}`,
