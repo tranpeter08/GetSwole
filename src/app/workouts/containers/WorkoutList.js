@@ -36,6 +36,6 @@ export class WorkoutList extends Component {
   }
 }; 
 
-const mapStateToProps = ({workout: {workouts}}) => ({workouts});
+export const mapStateToProps = ({workout: {workouts}}) => ({workouts});
 
 export default connect(mapStateToProps)(WorkoutList);
