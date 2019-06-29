@@ -1,8 +1,6 @@
 import thunk from 'redux-thunk';
 import configMockStore from 'redux-mock-store';
-
 import * as exerciseActions from './exercise-actions';
-import {generateExercises} from './exercise-actions.test';
 import {API_BASE_URL} from '../misc/config';
 import {fetchOptions} from '../misc/utils';
 
