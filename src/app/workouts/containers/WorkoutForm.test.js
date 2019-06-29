@@ -26,6 +26,7 @@ describe('<WorkoutForm />', () => {
 
   beforeEach(() => {
     setEditing.mockReset();
+    store.clearActions();
   });
 
   it('renders without crashing', () => {
@@ -33,7 +34,6 @@ describe('<WorkoutForm />', () => {
   });
 
   it('adds a click event listener on mount', () => {
-    const store = mockStore();
     const actionStack = store.getActions();
     const expectedAction = {type: WORKOUT_CLEAR_ERRORS};
     const outerNode = document.createElement('div');
@@ -66,27 +66,28 @@ describe('<WorkoutForm />', () => {
   });
 
   it('dispatches the correct actions on onSubmit', () => {
+    const actionStack = () => store.getActions();
     const data = {workoutName: 'workoutName'};
     const wrapper = shallow(
       <WorkoutForm dispatch={store.dispatch} {...defaultProps} />
     );
     const instance = () => wrapper.instance();
 
-    expect(store.getActions()).toEqual([]);
+    expect(actionStack()).toEqual([]);
 
     fetch.mockResponse(JSON.stringify({message: 'success'}));
     wrapper.setProps({action: 'Adding'});
     instance().onSubmit(data);
-    expect(store.getActions()).toEqual([{type: WORKOUT_ADD_REQUEST}]);
+    expect(actionStack()).toEqual([{type: WORKOUT_ADD_REQUEST}]);
 
-    store.clearActions()
-    
+    store.clearActions();
+
     wrapper.setProps({action: 'Editing'});
     instance().onSubmit(data);
-    expect(store.getActions()).toEqual([{type: WORKOUT_EDIT_REQUEST}]);
+    expect(actionStack()).toEqual([{type: WORKOUT_EDIT_REQUEST}]);
   });
 
-  it('correctly calls setEdit after onSubmit', () => {
+  it('correctly calls setEdit after onSubmit is done', done => {
     const data = {workoutName: 'workoutName'};
     const successRes = () => Promise.resolve('');
     const errorRes = () => Promise.resolve('error');
@@ -96,6 +97,7 @@ describe('<WorkoutForm />', () => {
     const instance = () => wrapper.instance();
 
     const userActions = ['Adding', 'Editing'];
+
     const testAction = action => {
       wrapper.setProps({dispatch: successRes, action});
       instance().onSubmit(data);
@@ -104,12 +106,49 @@ describe('<WorkoutForm />', () => {
       wrapper.setProps({dispatch: errorRes});
       instance().onSubmit(data);
 
-      process.nextTick(()=>{
+      process.nextTick(() => {
         expect(setEditing).toHaveBeenCalledWith(false);
+        done()
       });
+
     };
 
     userActions.forEach(testAction);
+  });
+
+  it('displays the correct status of the request', () => {
+    const wrapper = shallow(<WorkoutForm {...defaultProps}/>);
+    const statusContainer = () => wrapper.find('.workout-form-status');
+
+    expect(statusContainer().children()).toHaveLength(0);
+
+    let workout = {
+      loading: true,
+      error: false
+    };
+
+    wrapper.setProps({workout})
+    expect(statusContainer().children()).toHaveLength(1);
+    expect(statusContainer().text()).toEqual('Submitting...');
+
+    workout = {
+      loading: false,
+      error: {message: 'Failed request'}
+    };
+
+    wrapper.setProps({workout, anyTouched: true});
+    expect(statusContainer().children()).toHaveLength(1);
+    expect(statusContainer().exists('.error')).toBe(true);
+    expect(statusContainer().text()).toEqual(workout.error.message);
+  });
+
+  it('maps the correct props from state', () => {
+    const workout = {
+      loading: false,
+      error: ''
+    };
+
+    expect(mapStateToProps({workout})).toEqual({workout});
   });
 
 });

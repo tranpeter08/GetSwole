@@ -91,7 +91,7 @@ export class WorkoutForm extends Component {
         </div>
         <div className='workout-form-status'>
           { 
-            loading ? <span>Submitting</span> : 
+            loading ? <span>Submitting...</span> : 
             anyTouched && error ? <span className='error'>{error.message}</span> : null
           }
         </div>
