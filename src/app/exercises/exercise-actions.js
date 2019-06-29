@@ -1,15 +1,45 @@
 import {API_BASE_URL} from '../misc/config';
 import {fetchOptions, normalizeRes} from '../misc/utils';
  
-export const EXERCISE_REQUEST = 'EXERCISE_REQUEST';
-export const exerciseRequest = () => ({
-  type: EXERCISE_REQUEST
+export const EXERCISE_GET_REQUEST = 'EXERCISE_GET_REQUEST';
+export const exerciseGetRequest = () => ({
+  type: EXERCISE_GET_REQUEST
 });
 
-export const EXERCISE_SUCCESS = 'EXERCISE_SUCCESS';
-export const exerciseSuccess = exercises => ({
-  type: EXERCISE_SUCCESS,
+export const EXERCISE_GET_SUCCESS = 'EXERCISE_GET_SUCCESS';
+export const exerciseGetSuccess = exercises => ({
+  type: EXERCISE_GET_SUCCESS,
   exercises
+});
+
+export const EXERCISE_ADD_REQUEST = 'EXERCISE_ADD_REQUEST';
+export const exerciseAddRequest = () => ({
+  type: EXERCISE_ADD_REQUEST
+});
+
+export const EXERCISE_ADD_SUCCESS = 'EXERCISE_ADD_SUCCESS';
+export const exerciseAddSuccess = () => ({
+  type: EXERCISE_ADD_SUCCESS
+});
+
+export const EXERCISE_EDIT_REQUEST = 'EXERCISE_EDIT_REQUEST';
+export const exerciseEditRequest = () => ({
+  type: EXERCISE_EDIT_REQUEST
+});
+
+export const EXERCISE_EDIT_SUCCESS = 'EXERCISE_EDIT_SUCCESS';
+export const exerciseEditSuccess = () => ({
+  type: EXERCISE_EDIT_SUCCESS
+});
+
+export const EXERCISE_DELETE_REQUEST = 'EXERCISE_DELETE_REQUEST';
+export const exerciseDeleteRequest = () => ({
+  type: EXERCISE_DELETE_REQUEST
+});
+
+export const EXERCISE_DELETE_SUCCESS = 'EXERCISE_DELETE_SUCCESS';
+export const exerciseDeleteSuccess = () => ({
+  type: EXERCISE_DELETE_SUCCESS
 });
 
 export const EXERCISE_ERROR = 'EXERCISE_ERROR';
@@ -24,7 +54,7 @@ export const exerciseClearError = () => {
 };
 
 export const getExercises = workoutId => (dispatch, getState) => {
-  dispatch(exerciseRequest());
+  dispatch(exerciseGetRequest());
   const {userId} = getState().auth;
 
   return fetch(
@@ -32,54 +62,64 @@ export const getExercises = workoutId => (dispatch, getState) => {
     fetchOptions('GET')
   )
   .then(normalizeRes)
-  .then(({exercises}) => dispatch(exerciseSuccess(exercises)))
+  .then(({exercises}) => {
+    dispatch(exerciseGetSuccess(exercises))
+  })
   .catch(err => {
     console.error('GET EXERCISE ERROR:', err);
     dispatch(exerciseError(err));
   });
-}
+};
 
-export const createExercise = (workoutId, data) => (dispatch, getState) => {
-  dispatch(exerciseRequest());
+export const addExercise = (workoutId, data) => (dispatch, getState) => {
+  dispatch(exerciseAddRequest());
   const {userId} = getState().auth;
   return fetch(
     `${API_BASE_URL}/users/${userId}/workouts/${workoutId}/exercises`,
     fetchOptions('POST', data)
   )
   .then(normalizeRes)
-  .then(() => dispatch(getExercises(workoutId)))
+  .then(() => {
+    dispatch(exerciseAddSuccess());
+    dispatch(getExercises(workoutId));
+  })
   .catch(error => {
-    console.log('create exercise error', error);
+    console.error('ADD EXERCISE ERROR', error);
     dispatch(exerciseError(error));
   });
 };
 
 export const editExercise = (workoutId, exrcseId, data) => (dispatch, getState) => {
-  dispatch(exerciseRequest());
+  dispatch(exerciseEditRequest());
   const {userId} = getState().auth;
   return fetch(
     `${API_BASE_URL}/users/${userId}/workouts/${workoutId}/exercises/${exrcseId}`,
     fetchOptions('PUT', data)
   )
   .then(normalizeRes)
-  .then(() => dispatch(getExercises(workoutId)))
-  .catch(err => {
-    console.error('EXERCISE EDIT ERROR', err);
-    dispatch(exerciseError(err));
+  .then(() => {
+    dispatch(exerciseEditSuccess());
+    dispatch(getExercises(workoutId));
   })
-}
+  .catch(err => {
+    console.error('EDIT EXERCISE ERROR', err);
+    dispatch(exerciseError(err));
+  });
+};
 
 export const deleteExercise = (workoutId, exerciseId) => (dispatch, getState) => {
-  dispatch(exerciseRequest());
+  dispatch(exerciseDeleteRequest());
   const {userId} = getState().auth;
   return fetch(
     `${API_BASE_URL}/users/${userId}/workouts/${workoutId}/exercises/${exerciseId}`,
     fetchOptions('DELETE', null))
     .then(normalizeRes)
-    .then(() => dispatch(getExercises(workoutId)))
-    .catch( err => {
-      console.error('EXERCISE DELETE ERROR', err);
-      dispatch(exerciseError(err));
+    .then(() => {
+      dispatch(exerciseDeleteSuccess());
+      dispatch(getExercises(workoutId));
     })
-}
-
+    .catch( err => {
+      console.error('DELETE EXERCISE ERROR', err);
+      dispatch(exerciseError(err));
+    });
+};
