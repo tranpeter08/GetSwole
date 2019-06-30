@@ -3,11 +3,8 @@ import ExerciseForm from '../container/ExerciseForm';
 import '../style/exerciseAdd.css';
 
 export default class ExerciseAdd extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      adding: false
-    }
+  state = {
+    adding: false
   }
 
   setAdd(bool) {

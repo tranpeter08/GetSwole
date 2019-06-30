@@ -5,7 +5,7 @@ import ExerciseAdd from '../components/ExerciseAdd';
 import {getExercises} from '../exercise-actions';
 import '../style/exerciseList.css';
 
-class ExerciseList extends Component {
+export class ExerciseList extends Component {
   componentDidMount() {
     this.props.dispatch(getExercises(this.selectWorkoutId));
   }

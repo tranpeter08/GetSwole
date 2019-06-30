@@ -5,7 +5,7 @@ import ExerciseInput from '../components/ExerciseInput';
 import ExerciseResist from './ExerciseResist';
 import SuccessStatus from '../../misc/components/SuccessStatus';
 import { 
-  createExercise, 
+  addExercise, 
   editExercise, 
   exerciseClearError
 } from '../exercise-actions';
@@ -14,7 +14,7 @@ import '../style/exerciseForm.css';
 export class ExerciseForm extends Component {
   state = {
     succuess: false
-  }
+  };
 
   node = React.createRef();
 
@@ -24,41 +24,40 @@ export class ExerciseForm extends Component {
       input.focus();
     }
     document.addEventListener('click', this.handleClickOut, false);
-  }
+  };
 
   componentWillUnmount() {
     document.removeEventListener('click', this.handleClickOut, false);
     this.props.dispatch(exerciseClearError());
-  }
+  };
 
   onSubmit = data => {
     if (data.exerciseName) {
     const {action, dispatch, workoutId, exerciseId} = this.props;
-      console.log(data);
       if (action === 'Adding') {
       return dispatch(createExercise(workoutId, data))
         .then(this.handleRes);
-      }
+      };
 
       if (action === 'Editing') {
         return dispatch(editExercise(workoutId, exerciseId, data))
           .then(this.handleRes);
-      }
-    }
-  }
+      };
+    };
+  };
 
   handleClickOut = event => {
     if (this.node.current.contains(event.target)) {
       return;
-    }
+    };
     this.props.setEdit(false);
-  }
+  };
 
   handleRes = isSuccessful => {
     if (isSuccessful) {
       this.setState({succuess: true})
-    }
-  }
+    };
+  };
 
   render() {
     const {
@@ -70,8 +69,6 @@ export class ExerciseForm extends Component {
       exercise: {error}
     } = this.props;
 
-    console.log('exercise form',this.props);
-
     return (
     <div className='modal-backdrop'>
       <form 
@@ -80,7 +77,7 @@ export class ExerciseForm extends Component {
         ref={this.node}
       >
         {
-          this.state.succuess ? <SuccessStatus toggleForm={() => this.props.setEdit(false)} /> : 
+          this.state.succuess ? <SuccessStatus toggleForm={() => setEdit(false)} /> : 
           <React.Fragment>
             <h3>
               {action}
@@ -141,7 +138,7 @@ export class ExerciseForm extends Component {
         }
       </form>
     </div>
-    )
+    );
   }
 }
 

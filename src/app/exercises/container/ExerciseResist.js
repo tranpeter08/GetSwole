@@ -1,9 +1,7 @@
 import React from 'react';
 import {Field} from 'redux-form';
-// label input select 
 
 export default function ExerciseResist(props) {
-  // containerclass
   return (
     <div className='exerciseForm-group'>
       <label htmlFor='resistance' >Resistance</label>
@@ -26,4 +24,4 @@ export default function ExerciseResist(props) {
       </Field>
     </div>
   )
-}
+};

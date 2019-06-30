@@ -14,7 +14,11 @@ export default class ExcerciseInput extends Component {
           label === 'Notes' ? 
             <textarea id={input.name}  {...input} /> 
             :
-            <input type={type} id={input.name}{...input}/>
+            <input
+              min={0}
+              type={type} 
+              id={input.name} 
+              {...input}/>
         }
         
       </div>
