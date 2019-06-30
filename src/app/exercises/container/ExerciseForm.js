@@ -35,7 +35,7 @@ export class ExerciseForm extends Component {
     if (data.exerciseName) {
     const {action, dispatch, workoutId, exerciseId} = this.props;
       if (action === 'Adding') {
-      return dispatch(createExercise(workoutId, data))
+      return dispatch(addExercise(workoutId, data))
         .then(this.handleRes);
       };
 
@@ -141,8 +141,6 @@ export class ExerciseForm extends Component {
     );
   }
 }
-
-const selector = formValueSelector('ExerciseForm');
 
 const mapStateToProps = ({exercise}) => ({exercise});
 
