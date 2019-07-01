@@ -61,7 +61,9 @@
 #nutri-search-form input{
   border-top-left-radius: 1.9rem;
   border-bottom-left-radius: 1.9rem;
-  border-right: none;
+  border-top-right-radius: none;
+  border-bottom-right-radius: none;
+
 }
 
 #recipe-search-button,
