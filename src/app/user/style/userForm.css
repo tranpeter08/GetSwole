@@ -4,6 +4,8 @@
   color: black;
   background-color: rgb(235, 235, 235);
   padding: 1rem;
+  max-width: 60rem;
+  margin: 2rem;
 }
 
 #profile-form legend{

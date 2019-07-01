@@ -4,7 +4,6 @@
   align-items: center;
 }
 
-#profile-form,
 #register-form{
   flex: 0 1 60rem;
   margin: 2rem;

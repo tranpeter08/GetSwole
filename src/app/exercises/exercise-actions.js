@@ -85,6 +85,7 @@ export const addExercise = (workoutId, data) => (dispatch, getState) => {
   .then(() => {
     dispatch(exerciseAddSuccess());
     dispatch(getExercises(workoutId));
+    return true;
   })
   .catch(error => {
     console.error('ADD EXERCISE ERROR', error);
@@ -103,6 +104,7 @@ export const editExercise = (workoutId, exrcseId, data) => (dispatch, getState) 
   .then(() => {
     dispatch(exerciseEditSuccess());
     dispatch(getExercises(workoutId));
+    return true;
   })
   .catch(err => {
     console.error('EDIT EXERCISE ERROR', err);

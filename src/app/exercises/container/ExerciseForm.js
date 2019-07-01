@@ -66,7 +66,7 @@ export class ExerciseForm extends Component {
       handleSubmit, 
       setEdit,
       anyTouched,
-      exercise: {error}
+      exercise: {loading, error}
     } = this.props;
 
     return (
@@ -129,6 +129,7 @@ export class ExerciseForm extends Component {
             </div>
             <div className='exerciseForm-status'>
               { 
+                loading ? 'Submitting...' :
                 anyTouched && 
                 error && 
                 <span className='error'>{error.message}</span>
