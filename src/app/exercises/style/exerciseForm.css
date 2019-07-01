@@ -57,7 +57,7 @@
 .exerciseForm-group{
   margin-top: 1rem;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   flex: 1 0 100%;
 }
 
