@@ -32,7 +32,9 @@ export const RecipeResult = props => {
     <div className='recipeResult-container'>
 
       <div className='recipeResult-img-container'>
-        <img src={image} alt='Food representing the recipe'/>
+        <Link to={location}>
+          <img src={image} alt='Food representing the recipe'/>
+        </Link>
       </div>
 
       <div className='recipeResult-detail-container'>
