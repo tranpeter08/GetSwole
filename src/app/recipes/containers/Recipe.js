@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import RecipeDetail from '../components/RecipeDetail';
 import {isSaved, saveRecipe} from '../recipes-actions';
 
-class Recipe extends React.Component{
+export class Recipe extends React.Component{
   state = {
     isSaved: false
   }
@@ -18,6 +18,7 @@ class Recipe extends React.Component{
       location: {state: {uri}}, 
       match: {params: {username}} 
     } = this.props;
+    
     dispatch(isSaved(uri, username))
       .then(isSaved => isSaved ? this.setState({isSaved}) : null);
   }
@@ -42,6 +43,6 @@ class Recipe extends React.Component{
   }
 }
 
-const mapStateToProps = ({recipes: {loading}}) => ({loading})
+export const mapStateToProps = ({recipes: {loading}}) => ({loading})
 
 export default connect(mapStateToProps)(Recipe);

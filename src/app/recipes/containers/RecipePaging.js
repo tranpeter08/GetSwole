@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-const Pagination = props => {
+export const Pagination = props => {
   const {
     recipes: {from, to, more, count, loading}, 
     handlePaging

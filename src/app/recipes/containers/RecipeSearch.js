@@ -9,7 +9,7 @@ import Pagination from './RecipePaging';
 import ErrorMessage, {} from '../../misc/components/ErrorMessage';
 import '../styling/recipes.css';
 
-class RecipeSearch extends React.Component{
+export class RecipeSearch extends React.Component{
   state = {
     term: '',
     filters: new Map(),
@@ -183,6 +183,6 @@ class RecipeSearch extends React.Component{
   }
 }
 
-const mapStateToProps = ({recipes}) => ({recipes});
+export const mapStateToProps = ({recipes}) => ({recipes});
 
 export default connect(mapStateToProps)(RecipeSearch);
