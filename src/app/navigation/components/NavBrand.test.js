@@ -5,9 +5,8 @@ import {BrowserRouter as Router} from 'react-router-dom';
 
 describe('<NavBrand />', () => {
   let wrapper;
-  it('should render without crahsing', () => {
+  it('should render without crashing', () => {
     wrapper = shallow(<NavBrand />);
-    expect(wrapper).toMatchSnapshot();
   });
 
   it('should contain the right heading', () => {

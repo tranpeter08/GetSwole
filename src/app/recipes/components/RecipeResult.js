@@ -2,7 +2,7 @@ import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import '../styling/recipeResult.css';
 
-const RecipeResult = props => {
+export const RecipeResult = props => {
   const {
     recipe: {
       label, 

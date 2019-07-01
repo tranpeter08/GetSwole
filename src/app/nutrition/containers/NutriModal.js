@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import NutriDetailLi from './NutriDetailLi'
+import NutriDetailLi from '../components/NutriDetailLi'
 import {getNutriData} from '../actions/nutrition-detail-actions';
 import food from '../food.jpg';
 import '../styling/nutriResult-details.css';

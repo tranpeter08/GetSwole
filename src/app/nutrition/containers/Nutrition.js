@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import NutriSearchForm from './NutriSearchForm';
-import NutriResult from './NutriResult';
+import NutriSearchForm from '../components/NutriSearchForm';
+import NutriResult from '../components/NutriResult';
 import NutriModal from './NutriModal';
 import {getNutrition, getMoreNutri} from '../actions/nutrition-search-actions';
 import '../styling/nutrition.css';

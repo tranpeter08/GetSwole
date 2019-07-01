@@ -5,7 +5,7 @@ import RecipeResult from '../../recipes/components/RecipeResult';
 import {getMyRecipes, deleteRecipe} from '../myRecipes-actions';
 import '../styling/myRecipes.css';
 
-class MyRecipes extends React.Component{
+export class MyRecipes extends React.Component{
   componentDidMount() {
     this.props.dispatch(getMyRecipes())
   }

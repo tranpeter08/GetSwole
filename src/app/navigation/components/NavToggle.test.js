@@ -6,7 +6,6 @@ describe('<NavTogle />', () => {
   let wrapper;
   it('should render without crashing', () => {
     wrapper = shallow(<NavToggle />);
-    expect(wrapper).toMatchSnapshot();
     expect(wrapper.hasClass('nav-button')).toBeTruthy();
   })
 

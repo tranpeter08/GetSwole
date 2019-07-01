@@ -4,7 +4,7 @@ import {Redirect} from 'react-router-dom';
 import RecipeDetail from '../../recipes/components/RecipeDetail';
 import {deleteRecipe} from '../myRecipes-actions';
 
-class MyRecipe extends React.Component{
+export class MyRecipe extends React.Component{
   state = {
     redirect: false
   }

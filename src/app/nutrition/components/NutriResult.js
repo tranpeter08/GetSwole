@@ -9,11 +9,14 @@ const {
     image, 
     brand
   },
-  showModal} = props;
+  showModal
+} = props;
 
   return (
     <li className='nutriResult' onClick={() => showModal(props)}>
-      <img src={image || food} alt='Food Item' />
+      <img 
+        src={image || food} alt='Food Item'
+        onClick={() => showModal(props)} />
       <h4>{label}</h4>
       {brand ? <h5>({brand})</h5> : null}
     </li>

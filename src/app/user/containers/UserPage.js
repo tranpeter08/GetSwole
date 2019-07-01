@@ -4,7 +4,7 @@ import requiresLogin from './RequiresLogin';
 import UserInfo from './UserInfo';
 import WorkoutList from '../../workouts/containers/WorkoutList';
 import ExerciseList from '../../exercises/container/ExerciseList';
-import Nutrition from '../../nutrition/components/Nutrition';
+import Nutrition from '../../nutrition/containers/Nutrition';
 import Recipe from '../../recipes/containers/Recipe';
 import RecipeSearch from '../../recipes/containers/RecipeSearch';
 import MyRecipe from '../../myRecipes/containers/MyRecipe';
@@ -15,48 +15,7 @@ import '../style/userPage.css';
 export class UserPage extends React.Component {
   render() {
     const {path} = this.props.match;
-    // const routes = [
-    //   {
-    //     path: "/sandwiches",
-    //     component: Sandwiches
-    //   },
-    //   {
-    //     path: "/tacos",
-    //     component: Tacos,
-    //     routes: [
-    //       {
-    //         path: "/tacos/bus",
-    //         component: Bus
-    //       },
-    //       {
-    //         path: "/tacos/cart",
-    //         component: Cart
-    //       }
-    //     ]
-    //   }
-    // ];
 
-
-// function RouteConfigExample() {
-//   return (
-//     <Router>
-//       <div>
-//         <ul>
-//           <li>
-//             <Link to="/tacos">Tacos</Link>
-//           </li>
-//           <li>
-//             <Link to="/sandwiches">Sandwiches</Link>
-//           </li>
-//         </ul>
-
-//         {routes.map((route, i) => (
-//           <RouteWithSubRoutes key={i} {...route} />
-//         ))}
-//       </div>
-//     </Router>
-//   );
-// }
     return (
       <main className='userPage-main'>
         <Switch>

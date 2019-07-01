@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {RecipeFilters} from '../components/RecipeFilter';
+import {RecipeFilters} from '../components/RecipeFilters';
 
 class RecipeSrchForm extends React.Component{
   state = {
