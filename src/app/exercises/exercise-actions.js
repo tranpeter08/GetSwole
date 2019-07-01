@@ -53,6 +53,9 @@ export const exerciseClearError = () => {
   return ({type: EXERCISE_CLEAR_ERROR})
 };
 
+export const EXERCISE_CLEAR = 'EXERCISE_CLEAR';
+export const exerciseClear = () => ({type: EXERCISE_CLEAR});
+
 export const getExercises = workoutId => (dispatch, getState) => {
   dispatch(exerciseGetRequest());
   const {userId} = getState().auth;

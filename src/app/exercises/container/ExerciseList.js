@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Exercise from '../components/Exercise';
 import ExerciseAdd from '../components/ExerciseAdd';
-import {getExercises} from '../exercise-actions';
+import {getExercises, exerciseClear} from '../exercise-actions';
 import '../style/exerciseList.css';
 
 export class ExerciseList extends Component {
   componentDidMount() {
     this.props.dispatch(getExercises(this.selectWorkoutId));
+  }
+
+  componentWillUnmount() {
+    this.props.dispatch(exerciseClear());
   }
 
   get selectWorkoutId() {

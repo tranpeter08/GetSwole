@@ -4,7 +4,8 @@ import {
   EXERCISE_EDIT_REQUEST, EXERCISE_EDIT_SUCCESS, 
   EXERCISE_DELETE_REQUEST, EXERCISE_DELETE_SUCCESS, 
   EXERCISE_ERROR,
-  EXERCISE_CLEAR_ERROR
+  EXERCISE_CLEAR_ERROR,
+  EXERCISE_CLEAR
 } from './exercise-actions';
 
 const initialState = {
@@ -39,6 +40,9 @@ const exerciseReducer = (state = initialState, action) => {
 
     case EXERCISE_CLEAR_ERROR:
       return {...state, error: ''};
+
+    case EXERCISE_CLEAR:
+      return {...state, exercises: ''};
 
     default:
       return state;
