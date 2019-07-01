@@ -79,14 +79,6 @@
   font-size: 8rem;
 }
 
-.success-container{
-  text-align: center;
-  padding: 2rem;
-  visibility: visible;
-  opacity: 1;
-  transition: .25s;
-}
-
 @media screen and (min-width: 400px) {
   .exerciseForm {
     max-width: 36rem;
