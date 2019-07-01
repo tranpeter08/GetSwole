@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../../index.css';
 
 export default class SuccessStatus extends React.Component{
   componentDidMount() {
@@ -26,7 +27,7 @@ export default class SuccessStatus extends React.Component{
     return (
       <div className='success-container'>
         <i className="success-icon far fa-thumbs-up"></i>
-        <h2>Success!</h2>
+        <h2 className='success-h2'>Success!</h2>
       </div>
     )
   }
