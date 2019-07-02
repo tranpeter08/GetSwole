@@ -103,7 +103,7 @@ export const createUser = data => dispatch => {
 }
 
 export const authPersist = token => dispatch => {
-  storeToken(token, dispatch);
+  storeToken(token, dispatch)
 }
 
 export const logOut = () => dispatch => {
