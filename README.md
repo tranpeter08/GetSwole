@@ -3,7 +3,7 @@
 Get Swole! is a fitness web app created to keep track of workouts and exercises, search for nutrition facts, and find recipes that can be saved. Designed to be responsive, mobile first, and accessibility in mind.
 
 ## Live Site
-[Visit](https://get-swole-app.herokuapp.com/) the live site today!
+Visit the [live site](https://get-swole-app.herokuapp.com/) today!
 
 ## Screenshots
 
