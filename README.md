@@ -7,8 +7,10 @@ Get Swole! is a fitness web app created to keep track of workouts and exercises,
 
 ## Screenshots
 
-|<img alt ='Landing page' src='https://live.staticflickr.com/65535/48195731501_0cf1fcbe6b_z.jpg' width='200'>|<img alt ='Registration page' src='https://live.staticflickr.com/65535/48195776632_87e718016a_z.jpg' width='200'>|<img alt ='Workout Page' src='https://live.staticflickr.com/65535/48195810976_f2f0f5738a_z.jpg' width='250'>|<img alt ='Navigation' src='https://live.staticflickr.com/65535/48195731621_5f5308b214_z.jpg' width='250'>|
+|<img alt ='Landing page' src='https://live.staticflickr.com/65535/48195731501_0cf1fcbe6b_z.jpg' width='200'>|<img alt ='Registration page' src='https://live.staticflickr.com/65535/48195776632_87e718016a_z.jpg' width='200'>|<img alt ='Workout Page' src='https://live.staticflickr.com/65535/48195810976_f2f0f5738a_z.jpg' width='200'>|<img alt ='Navigation' src='https://live.staticflickr.com/65535/48195731621_5f5308b214_z.jpg' width='200'>|
 |:---:|:---:|:---:|:---:|
+|<img alt ='Workout page' src='https://live.staticflickr.com/65535/48195731766_f9bd6f8b96_z.jpg' width='200'>|<img alt ='Exercise page' src='https://live.staticflickr.com/65535/48195776512_3697389783_z.jpg' width='200'>|<img alt ='Adding Exercise Page' src='https://live.staticflickr.com/65535/48195731696_b88e347d59_z.jpg' width='200'>|<img alt ='Nutrition Page' src='https://live.staticflickr.com/65535/48195776437_6a4387b98e_z.jpg' width='200'>|
+|<img alt ='Nutrition Detail Page' src='https://live.staticflickr.com/65535/48195776802_ca737d0b4e_z.jpg' width='200'>|<img alt ='Recipes Page' src='https://live.staticflickr.com/65535/48195731471_fe2a8778d5_z.jpg' width='200'>|<img alt ='Recipe Detail Page' src='https://live.staticflickr.com/65535/48195731986_4d460cd524_z.jpg' width='200'>|<img alt ='My Recipes Page' src='https://live.staticflickr.com/65535/48195776707_cb2d11a2da_z.jpg' width='200'>|
 
 
 ## API Documentation
