@@ -6,6 +6,7 @@
 .pnp.js
 
 # testing
+.yml
 /coverage
 
 # production
