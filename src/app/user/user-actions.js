@@ -24,7 +24,7 @@ export const getProfile = () => (dispatch, getState) => {
   dispatch(getProfileRequest());
   
   const {userId} = getState().auth;
-  return fetch(`${API_BASE_URL}/users/profile/${userId}`, fetchOptions('GET'))
+  return fetch(`${API_BASE_URL}/users/${userId}/profile`, fetchOptions('GET'))
     .then(normalizeRes)
     .then(profile => {
       dispatch(getProfileSuccess(profile));
@@ -41,7 +41,7 @@ export const updateProfile = data => (dispatch, getState) => {
   dispatch(updateProfileRequest());
   const {userId} = getState().auth;
   return fetch(
-    `${API_BASE_URL}/users/profile/${userId}`,
+    `${API_BASE_URL}/users/${userId}/profile`,
     fetchOptions('PUT', data)
   )
   .then(normalizeRes)

@@ -117,9 +117,9 @@ describe('user-actions', () => {
               const fetchArgs = fetch.mock.calls[0];
 
               expect(fetchArgs[0])
-                .not.toEqual(`${API_BASE_URL}/user/profile/0001`);
+                .not.toEqual(`${API_BASE_URL}/user/0001/profile`);
               expect(fetchArgs[0])
-                .toEqual(`${API_BASE_URL}/users/profile/${userId}`);
+                .toEqual(`${API_BASE_URL}/users/${userId}/profile`);
               expect(fetchArgs[1])
                 .not.toEqual(fetchOptions('POST'));
               expect(fetchArgs[1]).toEqual(fetchOptions('GET'));
@@ -187,9 +187,9 @@ describe('user-actions', () => {
             const fetchArgs = fetch.mock.calls[0];
 
             expect(fetchArgs[0])
-              .not.toEqual(`${API_BASE_URL}/user/profile/${userId}`);
+              .not.toEqual(`${API_BASE_URL}/user/${userId}/profile`);
             expect(fetchArgs[0])
-              .toEqual(`${API_BASE_URL}/users/profile/${userId}`);
+              .toEqual(`${API_BASE_URL}/users/${userId}/profile`);
             expect(fetchArgs[1]).not.toEqual(fetchOptions('POST', newProfile));
             expect(fetchArgs[1]).toEqual(fetchOptions('PUT', newProfile));
 
