@@ -1,4 +1,5 @@
-# Get Swole! <img alt ='Travis Status' src='<img alt ='Landing page' src='https://live.staticflickr.com/65535/48195731501_0cf1fcbe6b_z.jpg' >
+# Get Swole! ![alt text][travis]
+[travis]: https://travis-ci.org/tranpeter08/GetSwole.svg?branch=master "Travis status"
 
 Get Swole! is a fitness web app created to keep track of workouts and exercises, search for nutrition facts, and find recipes that can be saved. Designed to be responsive, mobile first, and accessibility in mind.
 
