@@ -17,7 +17,7 @@ Visit the [live site](https://get-swole-app.herokuapp.com/) today!
 [Wireframe and User Stories](https://github.com/tranpeter08/getSwole-wireframes-stories)
 
 ## Web API
-Checkoutthe [Get Swole API](https://github.com/tranpeter08/GetSwole-API) and documentation.
+Checkout the [Get Swole API](https://github.com/tranpeter08/GetSwole-API) and documentation.
 
 ## Tech Stack
 
