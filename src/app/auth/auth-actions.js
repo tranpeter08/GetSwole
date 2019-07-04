@@ -64,16 +64,17 @@ export const logIn = (username, password) => dispatch => {
     })
     .catch(error => {
       dispatch(authError(error));
-      if (error.reason === 'validationError') {
+      if (error.reason === 'LoginError') {
         console.error('ERROR:', error);
+
         return Promise.reject( 
           new SubmissionError({
-            [error.location[0]]: error.message,
+            [error.location]: error.message,
             _error: 'Validation error...'
           })
         );
       }
-      return error;
+    
     });
 }
 

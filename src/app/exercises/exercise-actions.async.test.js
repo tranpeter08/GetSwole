@@ -20,14 +20,14 @@ describe('exercise-action async actions', () => {
     });
 
     it('dispatches the correct actions on success fetch response', () => {
-      fetch.mockResponse(JSON.stringify({message: 'success'}));
+      fetch.mockResponse(JSON.stringify([]));
 
       
-      const expectedUrl = `${API_BASE_URL}/users/${userId}/workouts/${workoutId}`;
-      const wrongUrl = `${API_BASE_URL}/users/${userId}/workout/${workoutId}`;
+      const expectedUrl = `${API_BASE_URL}/users/${userId}/workouts/${workoutId}/exercises`;
+      const wrongUrl = `${API_BASE_URL}/users/${userId}/workout/${workoutId}/exercises`;
       const expectedActions = [
         {type: EXERCISE_GET_REQUEST},
-        {type: EXERCISE_GET_SUCCESS}
+        {type: EXERCISE_GET_SUCCESS, exercises: []}
       ];
 
       return store.dispatch(getExercises(workoutId))

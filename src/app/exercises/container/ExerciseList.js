@@ -38,6 +38,8 @@ export class ExerciseList extends Component {
       history: {goBack}
     } = this.props;
 
+    console.log(this.props)
+
     return(
       <section className='exercises-section'>
         <h2 className='exercises-section-h2'>Exercises for "{workoutName}"</h2>

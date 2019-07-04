@@ -61,11 +61,11 @@ export const getExercises = workoutId => (dispatch, getState) => {
   const {userId} = getState().auth;
 
   return fetch(
-    `${API_BASE_URL}/users/${userId}/workouts/${workoutId}`,
+    `${API_BASE_URL}/users/${userId}/workouts/${workoutId}/exercises`,
     fetchOptions('GET')
   )
   .then(normalizeRes)
-  .then(({exercises}) => {
+  .then(exercises => {
     dispatch(exerciseGetSuccess(exercises))
   })
   .catch(err => {

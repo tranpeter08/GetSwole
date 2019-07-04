@@ -44,6 +44,9 @@ export class Login extends Component {
       submitting
     } = this.props;
 
+    console.log(error)
+
+
     if (username) { 
       return <Redirect to={`/user/${username}/workouts`} />
     }
@@ -97,8 +100,8 @@ export const mapStateToProps = ({auth: {token, ...authProps}}) => ({auth: authPr
 export const FormLogin = reduxForm({
   form: 'logIn',
   initialValues: {
-    'username': 'petertran00',
-    'password': 'petertran00'
+    'username': 'getSwoleUser',
+    'password': 'getSwoleUser'
   }
 })(Login);
 
