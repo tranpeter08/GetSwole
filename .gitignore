@@ -6,7 +6,7 @@
 .pnp.js
 
 # testing
-.yml
+.travis.yml
 /coverage
 
 # production
