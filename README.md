@@ -7,7 +7,7 @@ Get Swole! is a fitness web app created to keep track of workouts and exercises,
 
 ## Screenshots
 
-|<img alt ='Landing page' src='https://photos.app.goo.gl/AAEix3nStfGEjtNy5' width='200'>|<img alt ='Registration page' src='https://photos.app.goo.gl/cK925sgzwwJHZy3Y7' width='200'>|<img alt ='Navigation' src='https://drive.google.com/open?id=1zyBd6tkevjPQUunYuvibxl2XOTccMPmq' width='250'>|<img alt ='Workout Page' src='https://drive.google.com/open?id=1zEOI5FMF4lPFDXyWRVOekPjan_hQcUAm' width='250'>|
+|<img alt ='Landing page' src='https://flic.kr/p/2gqTHRX' width='200'>|<img alt ='Registration page' src='https://photos.app.goo.gl/cK925sgzwwJHZy3Y7' width='200'>|<img alt ='Navigation' src='https://drive.google.com/open?id=1zyBd6tkevjPQUunYuvibxl2XOTccMPmq' width='250'>|<img alt ='Workout Page' src='https://drive.google.com/open?id=1zEOI5FMF4lPFDXyWRVOekPjan_hQcUAm' width='250'>|
 |:---:|:---:|:---:|:---:|
 
 
