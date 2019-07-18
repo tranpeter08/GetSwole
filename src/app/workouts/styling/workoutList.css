@@ -23,8 +23,8 @@
       rgba(0, 0, 0, 0.8),rgba(0,0,0,.2), 
       rgba(0, 0, 0, .8)
     ),
-    url('./dumbells-rack.jpg')
-    bottom 10% center / cover
+    url('./dumbells-rack-large.jpg')
+    center / cover
     no-repeat;
 }
 
@@ -72,9 +72,3 @@
     max-width: calc(20% - 20px);
   }
 }
-
-/* @media (min-width: 1280px) {
-  .workouts-section li {
-    max-width: calc(16.67% - 20px);
-  } */
-/* } */
