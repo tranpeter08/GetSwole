@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import RecipeSrchForm from './RecipeSearchForm';
 import RecipeResult from '../components/RecipeResult';
+import SearchLoading from '../../misc/components/SearchLoading';
 import {queryStr} from '../../misc/utils';
 import {getRecipes} from '../recipes-actions';
 import Pagination from './RecipePaging';
@@ -174,7 +175,7 @@ export class RecipeSearch extends React.Component{
         {this.renderResultsSection()}
         <div className='recipe-search-status'>
           {
-            loading ? <span>Searching...</span> : 
+            loading ? <SearchLoading /> : 
             error ? <ErrorMessage message={error.message} /> : null
           }
         </div>

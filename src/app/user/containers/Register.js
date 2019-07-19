@@ -6,6 +6,8 @@ import {
   formValueSelector
 } from 'redux-form';
 import {Redirect} from 'react-router-dom'
+import Loader from 'react-loader-spinner';
+import Spinner from '../../misc/components/Spinner';
 import UserInput from '../components/UserInput';
 import { 
   required, 
@@ -115,9 +117,14 @@ export class Register extends Component {
               <UserInputs heightUnitValue={heightUnitValue} />
             </div>
             <button 
-              disabled={pristine || submitting || error}
+              disabled={submitting}
             >
-              Register
+              {
+                loading ? 
+                  <Spinner width='84.7px' height='28px' /> 
+                  : 
+                  'Register'
+              }
             </button>
           </fieldset>
           {
@@ -129,7 +136,6 @@ export class Register extends Component {
               * {error.message} at {error.location[0]}
             </small>
           }
-          {loading && <span>Loading...</span>}
         </form>
       </main>
     );
@@ -139,7 +145,7 @@ export class Register extends Component {
 const selector = formValueSelector('register');
 
 export const mapStateToProps = (state, props) => {
-  const {auth: {username}, user: {loading, error}} = state;
+  const {auth: {username, loading, error}} = state;
   const heightUnitValue = selector(state, 'heightUnit');
 
   return {
@@ -157,8 +163,8 @@ let ph = '1234567890';
 export default connect(mapStateToProps)(reduxForm({
   form: 'register',
   initialValues: {
-    username: '1234567890_', 
-    email: 'peter@domain.com',
+    username: 'guestUser', 
+    email: 'guestUser@domain.com',
     password: ph,
     confirmPassword: ph
   }

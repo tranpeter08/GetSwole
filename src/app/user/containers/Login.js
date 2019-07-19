@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Link, Redirect } from 'react-router-dom';
 import UserInput from '../components/UserInput';
+import Spinner from '../../misc/components/Spinner';
 import {required, isTrimmed} from '../validators';
 import {logIn} from '../../auth/auth-actions';
 import '../style/login.css';
@@ -44,9 +45,6 @@ export class Login extends Component {
       submitting
     } = this.props;
 
-    console.log(error)
-
-
     if (username) { 
       return <Redirect to={`/user/${username}/workouts`} />
     }
@@ -76,7 +74,7 @@ export class Login extends Component {
               disabled={submitting || loading}
               type='submit'
             >
-              Login
+              { loading ? <Spinner width='56px' height='28px' /> : 'Login'}
             </button>   
             <p className='message'>
               Not registered yet?<br/><Link to="/register">Sign up!</Link>

@@ -4,6 +4,7 @@ import { reduxForm, Field, formValueSelector } from 'redux-form';
 import ExerciseInput from '../components/ExerciseInput';
 import ExerciseResist from './ExerciseResist';
 import SuccessStatus from '../../misc/components/SuccessStatus';
+import Spinner from '../../misc/components/Spinner';
 import { 
   addExercise, 
   editExercise, 
@@ -66,7 +67,8 @@ export class ExerciseForm extends Component {
       handleSubmit, 
       setEdit,
       anyTouched,
-      exercise: {loading, error}
+      exercise: {loading, error},
+      submitting
     } = this.props;
 
     return (
@@ -116,9 +118,9 @@ export class ExerciseForm extends Component {
             <div className='exerciseForm-button-container'>
               <button 
                 type='submit' 
-                disabled={this.props.submitting}
+                disabled={submitting}
               >
-                Submit
+                { loading ? <Spinner width='55px' height='21px' /> : 'Submit'}
               </button>
               <button 
                 type='button' 
@@ -129,7 +131,6 @@ export class ExerciseForm extends Component {
             </div>
             <div className='exerciseForm-status'>
               { 
-                loading ? 'Submitting...' :
                 anyTouched && 
                 error && 
                 <span className='error'>{error.message}</span>

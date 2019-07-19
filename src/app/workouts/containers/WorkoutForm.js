@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field} from 'redux-form';
 import WorkoutInput from '../components/WorkoutInput';
+import Spinner from '../../misc/components/Spinner';
 import {notEmpty} from '../../user/validators';
 import {addWorkout, editWorkout, clearErrors} from '../workout-actions';
 import '../styling/workoutForm.css'
@@ -61,7 +62,8 @@ export class WorkoutForm extends Component {
     const {
       handleSubmit,
       workout: {error, loading},
-      anyTouched
+      anyTouched,
+      submitting
       } = this.props;
 
     return (
@@ -79,8 +81,9 @@ export class WorkoutForm extends Component {
         <div className='workout-button-container'>
           <button className='workoutForm-button-submit'
             type='submit' 
-            disabled={this.props.submitting}
-            >Submit
+            disabled={submitting}
+          >
+            {loading ? <Spinner width='55px' height='21px' /> : 'Submit'}
           </button>
           <button 
             type='button' 
@@ -91,8 +94,10 @@ export class WorkoutForm extends Component {
         </div>
         <div className='workout-form-status'>
           { 
-            loading ? <span>Submitting...</span> : 
-            anyTouched && error ? <span className='error'>{error.message}</span> : null
+            anyTouched && error ? 
+              <span className='error'>{error.message}</span> 
+              : 
+              null
           }
         </div>
       </form>

@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import NutriSearchForm from '../components/NutriSearchForm';
 import NutriResult from '../components/NutriResult';
 import NutriModal from './NutriModal';
+import SearchLoading from '../../misc/components/SearchLoading';
 import {getNutrition, getMoreNutri} from '../actions/nutrition-search-actions';
 import '../styling/nutrition.css';
 
@@ -66,9 +67,10 @@ export class Nutrition extends React.Component{
           }
         </ul>
         {
-          loading ? <p className='nutri-search-message'>Searching...</p> :
+          loading ?  <SearchLoading /> :
           !results ? null :
-          results.length === 0 ? <p className='nutri-search-message'>No results found</p> : null
+          results.length === 0 ? 
+            <p className='nutri-search-message'>No results found</p> : null
         }
         {
           !results ? null :
