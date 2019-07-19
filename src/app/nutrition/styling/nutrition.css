@@ -12,7 +12,7 @@
       rgba(0,0,0,.2), 
       rgba(0, 0, 0, .8)
     ),
-    url('./supermarket.jpg')
+    url('./supermarket-large.jpeg')
     center / cover
     no-repeat
     ;
@@ -61,8 +61,8 @@
 #nutri-search-form input{
   border-top-left-radius: 1.9rem;
   border-bottom-left-radius: 1.9rem;
-  border-top-right-radius: none;
-  border-bottom-right-radius: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 #recipe-search-button,
@@ -109,7 +109,7 @@
 
 .nutri-search-message{
   font-size: 1.8rem;
-  margin: 2rem;
+  margin-top: 2rem;
 }
 
 #nutri-searchMore-button{

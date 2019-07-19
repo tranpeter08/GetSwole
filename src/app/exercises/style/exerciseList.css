@@ -6,8 +6,8 @@
     rgba(0, 0,0 ,.8),rgba(0,0,0,.2), 
     rgba(0, 0, 0, .8)
   ),
-  url('./bridge-running.jpg')
-  top 52% center / cover
+  url('./bridge-running-large.jpg')
+  center / cover
   no-repeat;
 }
 

@@ -8,7 +8,6 @@
 
 html {
   font-size: 62.5%;
-  /* scroll-behavior: smooth; */
 }
 
 html, body, #root {
@@ -30,7 +29,7 @@ main {
   flex: 1 0 auto;
   background: 
     linear-gradient(rgba(0, 0, 0, 0.6), rgba(0,0,0,0.4)),
-    url('./images/gym-mobile.jpg')
+    url('./app/landing/images/gym-large.jpg')
     center / cover
     no-repeat
     fixed;
