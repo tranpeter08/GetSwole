@@ -1,6 +1,7 @@
-# Get Swole!
+# Get Swole ![alt text][travis]
+[travis]: https://travis-ci.org/tranpeter08/GetSwole.svg?branch=master "Travis status"
 
-Get Swole! is a fitness web app created to keep track of workouts and exercises, search for nutrition facts, and find recipes that can be saved. Designed to be responsive, mobile first, and accessibility in mind.
+Get Swole is a fitness web app created to keep track of workouts and exercises, search for nutrition facts, and find recipes that can be saved. Designed to be responsive, mobile first, and accessibility in mind.
 
 ## Live Site
 Visit the [live site](https://get-swole-app.herokuapp.com/) today!
@@ -16,7 +17,7 @@ Visit the [live site](https://get-swole-app.herokuapp.com/) today!
 [Wireframe and User Stories](https://github.com/tranpeter08/getSwole-wireframes-stories)
 
 ## Web API
-[Checkout](https://github.com/tranpeter08/GetSwole-API) the Get Swole API and documentation.
+Checkout the [Get Swole API](https://github.com/tranpeter08/GetSwole-API) and documentation.
 
 ## Tech Stack
 
