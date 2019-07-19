@@ -98,14 +98,12 @@ describe('<Register />', () => {
     const mockState = {
       auth: {
         username: 'tester',
-      },
-      user: {
         loading: false,
         error: ''
       }
     };
 
-    const {auth: {username}, user: {loading, error}} = mockState;
+    const {auth: {username, loading, error}} = mockState;
 
     const _mappedProps = {
       heightUnitValue: undefined,

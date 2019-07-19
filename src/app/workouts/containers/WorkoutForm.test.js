@@ -123,15 +123,6 @@ describe('<WorkoutForm />', () => {
     expect(statusContainer().children()).toHaveLength(0);
 
     let workout = {
-      loading: true,
-      error: false
-    };
-
-    wrapper.setProps({workout})
-    expect(statusContainer().children()).toHaveLength(1);
-    expect(statusContainer().text()).toEqual('Submitting...');
-
-    workout = {
       loading: false,
       error: {message: 'Failed request'}
     };
