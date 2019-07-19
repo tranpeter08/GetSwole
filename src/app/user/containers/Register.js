@@ -6,7 +6,6 @@ import {
   formValueSelector
 } from 'redux-form';
 import {Redirect} from 'react-router-dom'
-import Loader from 'react-loader-spinner';
 import Spinner from '../../misc/components/Spinner';
 import UserInput from '../components/UserInput';
 import { 
