@@ -17,17 +17,22 @@
   min-height: 70rem;
 }
 
+.landing-features h3, 
+.landing-features p,
+.landing-intro p,
+.landing-intro h2{
+  color: white;
+}
+
 .landing-intro h2{
   font-size: 3.8rem;
   margin-top: 0;
   padding-top: 5rem;
-  color: rgb(230, 230, 230);
   text-shadow: 3px 3px 2px rgba(0,0,0,0.8);
   letter-spacing: .2rem;
 }
 
 .landing-intro p {
-  color: rgb(230, 230, 230);
   text-shadow: 2px 2px 1px black;
   padding: 5rem 2rem;
   font-weight: 900;
@@ -90,8 +95,8 @@
   margin-bottom: 1rem;
 }
 
-.landing-features h3, .landing-features p{
-  color: rgb(224, 224, 224);
+.landing-features h3, 
+.landing-features p{
   text-shadow: 2px 2px 2px black;
 }
 
@@ -129,18 +134,17 @@
     padding: 5rem 5rem;
     min-width: 4rem;
   }
-  .landing-intro{
-    min-height: 90rem;
-  }
 }
 
 @media only screen and (min-width: 760px) {
   .landing-nutrition{
     flex: 2 1 0;
   }
+
   .landing-recipes{
     flex: 3 1 0;
   }
+
 }
 
 @media screen and (min-width: 1080px) {
