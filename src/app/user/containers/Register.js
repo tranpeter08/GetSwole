@@ -157,14 +157,6 @@ export const mapStateToProps = (state, props) => {
   };
 }
 
-let ph = '1234567890';
-
 export default connect(mapStateToProps)(reduxForm({
-  form: 'register',
-  initialValues: {
-    username: 'guestUser', 
-    email: 'guestUser@domain.com',
-    password: ph,
-    confirmPassword: ph
-  }
+  form: 'register'
 })(Register));
