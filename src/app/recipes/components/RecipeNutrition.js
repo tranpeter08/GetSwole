@@ -26,7 +26,12 @@ export class RecipeNutri extends React.Component{
   renderOptions = servings => (
     <select onChange={this.handleChange} value={this.state.value} >
       <option value={1}>Recipe</option>
-      <option value={servings}>Serving</option>
+      {
+        servings === 1 ? 
+          null 
+          :
+          <option value={servings}>Serving</option>
+      }
     </select>
   );
 
