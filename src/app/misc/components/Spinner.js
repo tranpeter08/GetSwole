@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../styling/spinner.css';
 
-export default function Spinner({width = height, height, thickness, color, className}) {
+export default function Spinner({width, height, thickness, color, className}) {
+  if (!width) {
+    width = height;
+  }
+
   const spnrStyle = {
     display: 'inline-block',
     border: `${thickness} solid rgba(255, 255, 255, 0.3)`,
