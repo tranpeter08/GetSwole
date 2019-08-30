@@ -1,0 +1,12 @@
+language: node_js
+node_js: node
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: heroku
+  api_key:
+    secure: iYL8j2BZITt17ocyJXes4/9pHmR+zSgE8k54VG+k5yf8Ni4Z6HjAlr0SvIO0+Gy7Ue47tQbiKVtc5QpwZqZMBIiststWj+yd6lY6T0dYcXUhsfQK8Bjhx/BBD9vPo0STejr2h6Lt5mH1i642gXHZLJLS9A5ChJX2H11tklAMbWHaRrIUCq23R93rATXAx2bgmS/VWp5o7O+/6BPL0DWk7ofkAGio0JVhjqPU/8Bw2P+qP7YkL5eccDSembVYji5dJkkwCNigMOjl5Gk0Hdkhkux6XmG/QRUgX+OUtXEORvmvTpiKCqUPP4o+OavSb0EKp7h4/LaHfXqHLAS2HbFBNKLi83cBrnPvxw3FJcifmbM61aUK7SnqRquJoJn7AOa8HkY6InGg9Xpy3+cfxw35PHF33Hrmr54NnWFnHlQqNJ+dkcrnGofwI7I6UbU/yNOugofu9+gRLNgs4v6ZRGgsKNJSJ6Gv54xQnN18BTql80ID4KXUOFHqKBRl5DbmMdfTICrwG9BkZQYgnMS8eo41DXREaKxPAYyNM5F05FWNNCS7arWzdczyR2HE7USiHIyIBkY4uf0SOuIxNO6PkiRbk54y8Xo1BCmEuOSH518NTk2G0btt/rmf+i8lUXqKkkW7BGb9szCN+Mk3rpbS0TxLdJC5CT7oYWiNMTI4mO2DoD8=
+  app: get-swole-app
+  on:
+    repo: tranpeter08/GetSwole
