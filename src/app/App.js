@@ -107,12 +107,10 @@ class App extends React.Component{
   };
 
   render() {
-    console.log(this.props);
     const {pathname} = this.props.location;
+    const paths = config.map(route => route.path.split('/')[1]);
     
-    const paths = config.map(route => route.path);
-
-    if (!paths.includes(pathname)) {
+    if (!paths.includes(pathname.split('/')[1])) {
       return <NotFound />
     }
 
