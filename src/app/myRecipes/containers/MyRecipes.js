@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import RecipeResult from '../../recipes/components/RecipeResult';
+import Spinner from '../../misc/components/Spinner';
 import {getMyRecipes, deleteRecipe} from '../myRecipes-actions';
 import '../styling/myRecipes.css';
 
@@ -28,14 +29,24 @@ export class MyRecipes extends React.Component{
   }
 
   render() {
+    const {recipes, loading, error} = this.props.myRecipes;
     const {url} = this.props.match;
-    let urlArr = url.split('/');
-    urlArr.splice(-1, 1, 'search');
+    const urlArr = url.split('/').splice(-1, 1, 'search');
 
     return <section className='myRecipes'>
       <h2>My Recipes</h2>
       {
-        this.props.myRecipes.recipes.length > 0 ? 
+        loading ? 
+          <div style={{textAlign: 'center'}}>
+            <Spinner 
+              height={'60px'} 
+              thickness={'6px'}
+              color='#195078'
+              className='my-recipes_spinner'
+            />
+          </div> :
+        error ? <p className='error'>{error.message}</p> :
+        recipes.length > 0 ? 
           <ul>{this.renderResults()}</ul> 
           : 
           <p className='no-recipes'>
