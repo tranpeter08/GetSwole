@@ -8,17 +8,16 @@ import UserPage from './user/containers/UserPage';
 import RefreshModal from './RefreshModal';
 import NotAuthorized from './auth/container/NotAuthorized';
 import NotFound from './misc/components/NotFound';
-import {} from './config';
+import config from './config';
 
-export const config = [
-  {path: '', component: Login}
-];
-
-export function Routes() {
+function Routes() {
+  const routes = config.map(({path, location,component}) => (
+    <Route path={path} location={location} component={component}/>
+  ));
 
   return (
     <Switch>
-
+      {routes}
     </ Switch>
   );
 }
