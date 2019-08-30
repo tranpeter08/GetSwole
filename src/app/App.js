@@ -1,16 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Route, withRouter, Switch} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import Navigation from './navigation/containers/Navigation';
-import Landing from './landing/components/Landing';
-import Login from './user/containers/Login';
-import Register from './user/containers/Register';
-import UserPage from './user/containers/UserPage';
 import RefreshModal from './RefreshModal';
 import {logOut, refreshToken} from './auth/auth-actions';
 import {Footer} from './footer/Footer';
-import NotAuthorized from './auth/container/NotAuthorized';
 import NotFound from './misc/components/NotFound';
+import Routes from './routes/Routes';
+import {config} from './routes/config';
 
 class App extends React.Component{
   state = {
@@ -110,30 +107,22 @@ class App extends React.Component{
   };
 
   render() {
-    const {loggedIn} = this.props;
+    console.log(this.props);
+    const {pathname} = this.props.location;
+    
+    const paths = config.map(route => route.path);
 
-    const landingLoc = {
-      exact: true,
-      pathname: '/',
-      state: {loggedIn}
+    if (!paths.includes(pathname)) {
+      return <NotFound />
     }
 
-    return(
+    return (
         <React.Fragment>
           {this.renderModal()}
           <header>
             <Navigation />
           </header>
-          
-          <Switch>
-            <Route path='/login' component={Login} />
-            <Route path='/register' component={Register} />
-            <Route path='/user/:username' component={UserPage} />
-            <Route path='/unauthorized' component={NotAuthorized} />
-            <Route location={landingLoc} component={Landing} />
-            <Route path='' component={NotFound}/>
-
-          </Switch>
+          <Routes />
           <Footer />
         </React.Fragment>
     );
