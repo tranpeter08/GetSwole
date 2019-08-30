@@ -9,7 +9,6 @@ export default function Landing(props) {
   const nutritionText = 'Find nutrition facts for a food or product from a vast database*.';
   const recipesText = 'Search for a recipe to view ingredients, nutrition facts and recipe instructions*. Recipes can also be saved for future reference.';
 
-  console.log(props);
   return (
     <main className='landing'>
 
