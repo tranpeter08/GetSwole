@@ -110,18 +110,27 @@ class App extends React.Component{
   };
 
   render() {
+    const {loggedIn} = this.props;
+
+    const landingLoc = {
+      exact: true,
+      pathname: '/',
+      state: {loggedIn}
+    }
+
     return(
         <React.Fragment>
           {this.renderModal()}
           <header>
             <Navigation />
           </header>
+          
           <Switch>
-            <Route exact path='/' component={Landing} />
             <Route path='/login' component={Login} />
             <Route path='/register' component={Register} />
             <Route path='/user/:username' component={UserPage} />
             <Route path='/unauthorized' component={NotAuthorized} />
+            <Route location={landingLoc} component={Landing} />
             <Route path='' component={NotFound}/>
 
           </Switch>
