@@ -1,0 +1,229 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Routes /> renders without crashing 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Routes />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <Route
+          component={[Function]}
+          path="/login"
+        />,
+        <Route
+          component={[Function]}
+          path="/register"
+        />,
+        <Route
+          component={[Function]}
+          path="/user/:username"
+        />,
+        <Route
+          component={[Function]}
+          path="/unauthorized"
+        />,
+        <Route
+          component={[Function]}
+          path="/"
+        />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": "/login",
+        "nodeType": "class",
+        "props": Object {
+          "component": [Function],
+          "path": "/login",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": "/register",
+        "nodeType": "class",
+        "props": Object {
+          "component": [Function],
+          "path": "/register",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": "/user/:username",
+        "nodeType": "class",
+        "props": Object {
+          "component": [Function],
+          "path": "/user/:username",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": "/unauthorized",
+        "nodeType": "class",
+        "props": Object {
+          "component": [Function],
+          "path": "/unauthorized",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": "/",
+        "nodeType": "class",
+        "props": Object {
+          "component": [Function],
+          "path": "/",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <Route
+            component={[Function]}
+            path="/login"
+          />,
+          <Route
+            component={[Function]}
+            path="/register"
+          />,
+          <Route
+            component={[Function]}
+            path="/user/:username"
+          />,
+          <Route
+            component={[Function]}
+            path="/unauthorized"
+          />,
+          <Route
+            component={[Function]}
+            path="/"
+          />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": "/login",
+          "nodeType": "class",
+          "props": Object {
+            "component": [Function],
+            "path": "/login",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "/register",
+          "nodeType": "class",
+          "props": Object {
+            "component": [Function],
+            "path": "/register",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "/user/:username",
+          "nodeType": "class",
+          "props": Object {
+            "component": [Function],
+            "path": "/user/:username",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "/unauthorized",
+          "nodeType": "class",
+          "props": Object {
+            "component": [Function],
+            "path": "/unauthorized",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "/",
+          "nodeType": "class",
+          "props": Object {
+            "component": [Function],
+            "path": "/",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
