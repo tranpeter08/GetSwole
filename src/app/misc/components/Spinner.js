@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../styling/spinner.css';
 
-export default function Spinner({width, height, thickness, color, className}) {
-  if (!width) {
-    width = height;
-  }
+export default function Spinner(
+  {width = '100%', height, thickness, color, className}
+) {
 
   const spnrStyle = {
     display: 'inline-block',
