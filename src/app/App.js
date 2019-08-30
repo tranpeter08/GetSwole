@@ -115,14 +115,14 @@ class App extends React.Component{
     }
 
     return (
-        <React.Fragment>
-          {this.renderModal()}
-          <header>
-            <Navigation />
-          </header>
-          <Routes />
-          <Footer />
-        </React.Fragment>
+      <React.Fragment>
+        {this.renderModal()}
+        <header>
+          <Navigation />
+        </header>
+        <Routes />
+        <Footer />
+      </React.Fragment>
     );
   }
 };
