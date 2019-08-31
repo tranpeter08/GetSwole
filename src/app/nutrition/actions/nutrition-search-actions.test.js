@@ -15,6 +15,10 @@ describe('nutrition-search-actions', () => {
   const searchSuccess = 'NUTRITION_SEARCH_SUCCESS';
   const searchResults = [1,2,3,4];
 
+  const searchMoreReq = 'NUTRITION_SEARCH_MORE_REQ';
+  const searchMoreSuccess = 'NUTRI_SEARCH_MORE_SUCCESS';
+  const searchMoreResults = [5,6,7,8];
+
   const errStr = 'NUTRITION_ERROR';
   const error = {message: 'mock error'};
 
@@ -47,10 +51,6 @@ describe('nutrition-search-actions', () => {
     );
   });
 
-  const searchMoreReq = 'NUTRITION_SEARCH_MORE_REQ';
-  const searchMoreSuccess = 'NUTRI_SEARCH_MORE_SUCCESS';
-  const searchMoreResults = [5,6,7,8];
-
   describe('nutriSearchMoreReq', () => {
     const expectedAction = {
       type: searchMoreReq
@@ -79,4 +79,20 @@ describe('nutrition-search-actions', () => {
       expectedAction
     );
   });
+
+  describe('nutritionError', () => {
+    const expectedAction = {
+      type: errStr,
+      error
+    };
+
+    testActionCreator(
+      errStr,
+      NUTRITION_ERROR,
+      nutritionError,
+      error,
+      expectedAction
+    );
+  });
+
 });
