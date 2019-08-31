@@ -9,7 +9,7 @@ import {
 import {API_BASE_URL} from '../../misc/config';
 import {fetchOptions} from '../../misc/utils';
 
-function testActionCreator(string, actionType, creator, args, expectedAction) {
+export function testActionCreator(string, actionType, creator, args, expectedAction) {
   it('contains correct action type string', () => {
     expect(actionType).toEqual(string);
   });
