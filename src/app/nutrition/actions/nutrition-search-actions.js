@@ -7,9 +7,6 @@ export const nutritionSearchReq = () => ({type: NUTRITION_SEARCH_REQUEST});
 export const NUTRITION_SEARCH_MORE_REQ = 'NUTRITION_SEARCH_MORE_REQ';
 export const nutriSearchMoreReq = () => ({type: NUTRITION_SEARCH_MORE_REQ});
 
-export const NUTRITION_DATA_REQUEST = 'NUTRITION_DATA_REQUEST';
-export const nutriDataReq = () => ({type: NUTRITION_DATA_REQUEST})
-
 export const NUTRITION_SEARCH_SUCCESS = 'NUTRITION_SEARCH_SUCCESS';
 export const nutriSearchSuccess = results => ({
   type: NUTRITION_SEARCH_SUCCESS,
@@ -43,8 +40,4 @@ export const getMoreNutri = () => dispatch => {
   .then(normalizeRes)
   .then(results => dispatch(nutriSearchMoreSuccess(results)))
   .catch(error => dispatch(nutritionError(error)));
-}
-
-export const getNutriData = data => dispatch => {
-  // dispatch();
 }
