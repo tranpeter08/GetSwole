@@ -5,7 +5,6 @@ import {
   NUTRITION_SEARCH_SUCCESS, nutriSearchSuccess,
   NUTRITION_SEARCH_MORE_REQ, nutriSearchMoreReq,
   NUTRI_SEARCH_MORE_SUCCESS, nutriSearchMoreSuccess,
-  NUTRITION_DATA_REQUEST, nutriDataReq,
   NUTRITION_ERROR, nutritionError
 } from './nutrition-search-actions';
 import {testActionCreator} from './nutrition-detail-actions.test';
@@ -94,5 +93,4 @@ describe('nutrition-search-actions', () => {
       expectedAction
     );
   });
-
 });
