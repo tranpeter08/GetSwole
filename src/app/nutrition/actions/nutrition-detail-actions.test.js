@@ -19,7 +19,6 @@ export function testActionCreator(string, actionType, creator, args, expectedAct
   });
 }
 
-
 describe('nutrition-detail-actions', () => {
   const reqStr = 'NUTRITION_DETAIL_REQUEST';
   const successStr = 'NUTRITION_DETAIL_SUCCESS';
@@ -71,55 +70,5 @@ describe('nutrition-detail-actions', () => {
       error,
       expectedAction
     );
-  });
-
-  describe('getNutriData', () => {
-    const userId = 'userId';
-    const mockStore = configMockStore([thunk]);
-    const store = mockStore({auth : {userId}});
-    const query = {test: 'test'};
-    const url = `${API_BASE_URL}/nutrition`;
-
-
-    afterEach(() => {
-      store.clearActions();
-      fetch.mockReset();
-    });
-
-    it('dispatches correct actions on successful request', () => {
-      const expectedActions = [
-        {type: reqStr},
-        {type: successStr, data}
-      ];
-
-      fetch.mockResponse(JSON.stringify(data));
-
-      return store.dispatch(getNutriData(query))
-        .then(() => {
-          
-          expect(fetch).toHaveBeenCalled();
-
-          const fetchArgs = fetch.mock.calls[0];
-
-          expect(fetchArgs[0]).toEqual(url);
-          expect(fetchArgs[1]).toEqual(fetchOptions('POST', query));
-
-          expect(store.getActions()).toEqual(expectedActions);
-        });
-    });
-
-    it('dispatches correct actions on failed request', () => {
-      const expectedActions = [
-        {type: reqStr},
-        {type: errStr, error}
-      ];
-
-      fetch.mockReject(error);
-
-      return store.dispatch(getNutriData(query))
-        .then(() => {
-          expect(store.getActions()).toEqual(expectedActions);
-        });
-    });
   });
 });
