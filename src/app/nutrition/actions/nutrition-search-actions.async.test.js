@@ -76,9 +76,47 @@ describe('nutrition search async actions', () => {
 
   describe('getMoreNutri', () => {
     const store = mockStore({});
+    const url = `${API_BASE_URL}/nutrition/next`;
 
-    it('dispatches the correct acitons a successful request', () => {
-      
+    afterEach(() => {
+      store.clearActions();
+      fetch.mockReset();
+    });
+
+    it('dispatches the correct acitons on a successful request', () => {
+      const expectedActions = [
+        {type: searchMoreReq},
+        {type: searchMoreSuccess, results: searchMoreResults}
+      ];
+
+      fetch.mockResponse(JSON.stringify(searchMoreResults));
+
+      return store.dispatch(getMoreNutri())
+        .then(() => {
+          const fetchArgs = fetch.mock.calls[0];
+
+          expect(fetch).toHaveBeenCalled();
+          expect(fetchArgs[0]).toEqual(url);
+          expect(fetchArgs[1]).toEqual(fetchOptions('GET'));
+
+          expect(store.getActions()).toEqual(expectedActions);
+        });
+    });
+
+    it('dispatches the correct actions on a failed request', () => {
+      const expectedActions = [
+        {type: searchMoreReq},
+        {type: errStr, error}
+      ];
+
+      fetch.mockReject(error);
+
+      return store.dispatch(getMoreNutri())
+        .then(() => {
+          expect(fetch).toHaveBeenCalled();
+
+          expect(store.getActions()).toEqual(expectedActions);
+        });
     });
   });
 });
