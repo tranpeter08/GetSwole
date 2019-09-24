@@ -4,7 +4,7 @@ import {
   NUTRITION_DETAIL_ERROR
 } from '../actions/nutrition-detail-actions';
 
-const initialState = {
+export const initialState = {
   loading: false,
   data: '',
   error: ''
