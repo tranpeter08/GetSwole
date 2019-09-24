@@ -21,7 +21,7 @@ export const authRefreshRequest = () => ({
 });
 
 export const AUTH_SET = 'AUTH_SET';
-export const authSet = token => ({
+export const authSet = (token) => ({
   type: AUTH_SET, 
   token
 });
@@ -39,7 +39,7 @@ export const authSuccess = (username, userId) => ({
 });
 
 export const AUTH_ERROR = 'AUTH_ERROR';
-export const authError = error => ({
+export const authError = (error) => ({
   type: AUTH_ERROR,
   error
 });
@@ -78,7 +78,7 @@ export const logIn = (username, password) => dispatch => {
     });
 }
 
-export const createUser = data => dispatch => {
+export const createUser = (data) => dispatch => {
   dispatch(authCreateUserReq());
   return fetch(
     `${API_BASE_URL}/users`, 
@@ -103,7 +103,7 @@ export const createUser = data => dispatch => {
     });
 }
 
-export const authPersist = token => dispatch => {
+export const authPersist = (token) => dispatch => {
   storeToken(token, dispatch)
 }
 
