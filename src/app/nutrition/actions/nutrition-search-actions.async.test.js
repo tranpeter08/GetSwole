@@ -1,15 +1,9 @@
 import thunk from 'redux-thunk';
 import configMockStore from 'redux-mock-store';
 import {
-  NUTRITION_SEARCH_REQUEST, nutritionSearchReq,
-  NUTRITION_SEARCH_SUCCESS, nutriSearchSuccess,
-  NUTRITION_SEARCH_MORE_REQ, nutriSearchMoreReq,
-  NUTRI_SEARCH_MORE_SUCCESS, nutriSearchMoreSuccess,
-  NUTRITION_ERROR, nutritionError,
   getNutrition,
   getMoreNutri,
 } from './nutrition-search-actions';
-import {testActionCreator} from './nutrition-detail-actions.test';
 import {API_BASE_URL} from '../../misc/config';
 import {fetchOptions} from '../../misc/utils';
 
