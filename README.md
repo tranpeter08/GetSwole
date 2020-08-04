@@ -6,7 +6,7 @@ Get Swole is a fitness web app created to keep track of workouts and exercises, 
 
 ## Live Site
 
-Visit the [live site](get-swole-app.netlify.app) today!
+Visit the [live site](https://get-swole-app.netlify.app/) today!
 
 ## Screenshots
 
