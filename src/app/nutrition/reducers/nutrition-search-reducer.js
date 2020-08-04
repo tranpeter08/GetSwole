@@ -3,7 +3,7 @@ import {
   NUTRITION_SEARCH_MORE_REQ,
   NUTRITION_SEARCH_SUCCESS,
   NUTRI_SEARCH_MORE_SUCCESS,
-  NUTRITION_ERROR
+  NUTRITION_ERROR,
 } from '../actions/nutrition-search-actions';
 
 const initialState = {
@@ -11,37 +11,36 @@ const initialState = {
   text: '',
   results: '',
   hasNext: false,
-  error: ''
+  error: '',
 };
 
 export const nutriReducer = (
-  state = initialState, 
+  state = initialState,
   {type, results = {}, error}
 ) => {
-
   const {text, hints, hasNext} = results;
 
-  switch(type) {
+  switch (type) {
     case NUTRITION_SEARCH_REQUEST:
       return {...state, loading: true, text: '', results: ''};
     case NUTRITION_SEARCH_MORE_REQ:
       return {...state, loading: true};
     case NUTRITION_SEARCH_SUCCESS:
       return {
-        ...state, 
-        loading: false, 
-        text, 
-        results: hints, 
-        hasNext, 
-        error: ''
+        ...state,
+        loading: false,
+        text,
+        results: hints,
+        hasNext,
+        error: '',
       };
     case NUTRI_SEARCH_MORE_SUCCESS:
-      const [first, ...rest] = hints;
+      const [, ...rest] = hints;
       return {
         ...state,
         loading: false,
-        results: [...state.results, ...rest], 
-        hasNext
+        results: [...state.results, ...rest],
+        hasNext,
       };
     case NUTRITION_ERROR:
       return {...state, hasNext: false, error};

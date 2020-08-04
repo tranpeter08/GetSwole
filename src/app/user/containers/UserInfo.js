@@ -8,8 +8,8 @@ import '../style/userInfo.css';
 
 export class UserInfo extends React.Component {
   state = {
-    edit: false
-  }
+    edit: false,
+  };
 
   componentDidMount() {
     this.props.dispatch(getProfile());
@@ -17,31 +17,27 @@ export class UserInfo extends React.Component {
 
   toggleForm = () => {
     this.setState((state) => ({edit: !state.edit}));
-  }
+  };
 
   renderForm(profile) {
-    return this.state.edit ? 
-      <UserForm 
-        initialValues={profile} 
-        toggleForm={this.toggleForm} /> 
-      : 
-      null
+    return this.state.edit ? (
+      <UserForm initialValues={profile} toggleForm={this.toggleForm} />
+    ) : null;
   }
 
   normalizeHeight({height, heightUnit, inches}) {
-    
     if (height && heightUnit === 'ft' && inches) {
-      return `${height}' ${inches}"`
+      return `${height}' ${inches}"`;
     }
 
     if (height && heightUnit === 'ft' && !inches) {
-      return `${height}'`
-    };
+      return `${height}'`;
+    }
 
     if (!height && inches) {
-      return `${inches}"`
-    };
-    
+      return `${inches}"`;
+    }
+
     if (!height) {
       return '';
     }
@@ -51,41 +47,39 @@ export class UserInfo extends React.Component {
 
   normalizeWeight({weight, weightUnit}) {
     if (weight && weightUnit) {
-      return `${weight} ${weightUnit}`
-    };
+      return `${weight} ${weightUnit}`;
+    }
 
-    return ''; 
-  };
+    return '';
+  }
 
   renderUserInfo(profile) {
     if (profile) {
-      const {
-        bodyFat, 
-        firstName, 
-        lastName
-      } = profile;
+      const {bodyFat, firstName, lastName} = profile;
 
       const name = `${firstName || ''} ${lastName || ''}`;
-    
+
       return (
-        <div className='userInfo-detail-container'>
+        <div className="userInfo-detail-container">
           <h2>Name: {name.trim()}</h2>
           <p>
             Height:{' '}
-            <span className='full-height'>{this.normalizeHeight(profile)}</span>
+            <span className="full-height">{this.normalizeHeight(profile)}</span>
           </p>
           <p>
             Weight:{' '}
-            <span className='full-weight'>{this.normalizeWeight(profile)}</span>
+            <span className="full-weight">{this.normalizeWeight(profile)}</span>
           </p>
-          <p>Body Fat: <span className='bodyFat'>{bodyFat}</span>%</p>
-          <div className='profile-button-container'>
-            <button 
-              type='button'
+          <p>
+            Body Fat: <span className="bodyFat">{bodyFat}</span>%
+          </p>
+          <div className="profile-button-container">
+            <button
+              type="button"
               onClick={this.toggleForm}
-              aria-label='Edit Profile'
+              aria-label="Edit Profile"
             >
-              <i className="edit-profile-icon far fa-edit"></i>
+              <i className="edit-profile-icon far fa-edit" />
             </button>
           </div>
         </div>
@@ -94,31 +88,30 @@ export class UserInfo extends React.Component {
   }
 
   render() {
-  
     const {
       profile,
-      loading,
-      error
+      // loading,
+      error,
     } = this.props.user;
 
     if (error && error.code === 401) {
-      return <Redirect to='/unauthorized' />
+      return <Redirect to="/unauthorized" />;
     }
 
     return (
-      <section className='userInfo-section'>
+      <section className="userInfo-section">
         {this.renderForm(profile)}
-        <div className='profile-container'>
+        <div className="profile-container">
           {this.renderUserInfo(profile)}
           {error && <ErrorMessage message={error.message} />}
         </div>
       </section>
-    )
+    );
   }
 }
 
 export const mapStateToProps = ({user}) => {
-  return {user}
+  return {user};
 };
 
 export default connect(mapStateToProps)(UserInfo);
