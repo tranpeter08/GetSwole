@@ -2,6 +2,9 @@ import React from 'react';
 import './footer.css'
 
 export const Footer = props => {
+  const date = new Date();
+  const year = date.getFullYear();
+
   return <footer className='footer-app'>
     <section className='icon-section'>
       <h2>Connect</h2>
@@ -18,7 +21,7 @@ export const Footer = props => {
         </span>
     </section>
     <section className='copyright'>
-    <p>© 2019 Apollo Testing Systems, Inc</p>
+    <p>Copyright© {year} Peter Tran</p>
     </section>
   </footer>
 }
